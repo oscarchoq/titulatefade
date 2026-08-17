@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Tokens crudos — tema claro (DESIGN_BRIEF §1.5)
+   Navy #102A43 + dorado #C4A150 + papel #F5F5F0. Sin pares oscuros.
+   ============================================================ */
+:root {
+  /* Base */
+  --background: oklch(96.9% 0.007 106.5);          /* #F5F5F0 papel */
+  --foreground: oklch(27.8% 0.056 249.8);          /* #102A43 navy  */
+
+  /* Superficies */
+  --card: oklch(100% 0 0);                         /* #FFFFFF */
+  --card-foreground: oklch(27.8% 0.056 249.8);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(27.8% 0.056 249.8);
+
+  /* Primario (navy) */
+  --primary: oklch(27.8% 0.056 249.8);             /* #102A43 */
+  --primary-foreground: oklch(96.9% 0.007 106.5);  /* #F5F5F0 */
+
+  /* Secundario / neutros fríos */
+  --secondary: oklch(93.6% 0.006 255.5);           /* #E7EAEE */
+  --secondary-foreground: oklch(27.8% 0.056 249.8);
+  --muted: oklch(94.2% 0.005 258.3);               /* #EAECEF */
+  --muted-foreground: oklch(49.0% 0.031 259.0);    /* #566172 */
+
+  /* accent = superficie hover de shadcn (neutro, NO el dorado) */
+  --accent: oklch(94.2% 0.005 258.3);              /* #EAECEF */
+  --accent-foreground: oklch(27.8% 0.056 249.8);
+
+  /* Dorado de marca (acento real) */
+  --gold: oklch(72.4% 0.108 86.1);                 /* #C4A150 */
+  --gold-foreground: oklch(27.8% 0.056 249.8);     /* navy sobre dorado */
+  --gold-strong: oklch(54.7% 0.101 84.5);          /* #8C6B1C texto dorado sobre claro */
+
+  /* Estado */
+  --destructive: oklch(50.1% 0.178 28.7);          /* #B3261E */
+  --destructive-foreground: oklch(100% 0 0);
+
+  /* Líneas / foco */
+  --border: oklch(90.8% 0.008 253.9);              /* #DDE1E6 */
+  --input: oklch(90.8% 0.008 253.9);
+  --ring: oklch(27.8% 0.056 249.8);                /* navy */
+
+  /* Radio base (§3.4) */
+  --radius: 0.625rem;                              /* 10px */
+
+  /* Fuentes autoalojadas (@fontsource) + fallbacks del sistema */
+  --font-geist-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-geist-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-montserrat-alternates: "Montserrat Alternates", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ============================================================
+   Mapeo Tailwind v4 (SPEC 01 §3) — tokens → utilidades
+   ============================================================ */
+@theme inline {
+  /* colores semánticos → utilidades de color (bg / text / border) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);          /* neutro hover shadcn, NO el dorado */
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+
+  /* dorado de marca (acento real) → bg-gold / text-gold / text-gold-strong */
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-gold-strong: var(--gold-strong);
+
+  /* fuentes → font-sans / font-mono / font-display */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-montserrat-alternates);
+
+  /* radio base 10px + escala derivada (§3.4) */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================================
+   Estilos base
+   ============================================================ */
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* ============================================================
+   Efectos — .fade-in (DESIGN_BRIEF §6.1)
+   ============================================================ */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-in {
+  -webkit-animation: fadeIn 0.5s both;
+  animation: fadeIn 0.5s both;
+}
