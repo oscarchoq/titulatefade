@@ -1,0 +1,26 @@
+---
+// Hero de la Home — banda navy autocontenida (SPEC 02 §Paso 3).
+// Copy hardcodeado a propósito (YAGNI): no es un hero genérico con props.
+// Texto claro sobre navy = `text-background` (papel #F5F5F0); el sistema no
+// expone `text-primary-foreground` como utilidad (ver SPEC 02, decisión de impl.).
+// min-h-[32rem]
+---
+
+<section
+  class="flex min-h-128 flex-col items-center justify-center rounded-b-2xl bg-primary px-8 py-16 text-center text-background"
+>
+  <img src="/logo_upt.png" alt="Universidad Privada de Tacna" class="h-20 w-auto" />
+
+  <p class="mt-8 text-sm font-semibold uppercase tracking-wide text-gold">
+    Facultad de Derecho y Ciencias Políticas
+  </p>
+
+  <h1 class="mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
+    ¿Qué modalidad de titulación
+    <span class="block">vas a <span class="text-gold">tramitar</span>?</span>
+  </h1>
+
+  <p class="mt-4 max-w-xl text-secondary">
+    Elige una modalidad para ver su proceso; este portal es solo informativo.
+  </p>
+</section>

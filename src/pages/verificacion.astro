@@ -1,0 +1,166 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Muestras de color de marca (§1.1 del brief)
+const brandColors = [
+  { name: 'Navy', hex: '#102A43', cls: 'bg-primary text-background' },
+  { name: 'Dorado', hex: '#C4A150', cls: 'bg-gold text-gold-foreground' },
+  { name: 'Dorado fuerte', hex: '#8C6B1C', cls: 'bg-gold-strong text-background' },
+  { name: 'Papel', hex: '#F5F5F0', cls: 'bg-background text-foreground border border-border' },
+];
+
+// Tokens semánticos pedidos por el spec
+const semanticColors = [
+  { name: 'primary', hex: '#102A43', cls: 'bg-primary text-background' },
+  { name: 'secondary', hex: '#E7EAEE', cls: 'bg-secondary text-foreground' },
+  { name: 'muted', hex: '#EAECEF', cls: 'bg-muted text-muted-foreground' },
+  { name: 'border', hex: '#DDE1E6', cls: 'bg-border text-foreground' },
+  { name: 'destructive', hex: '#B3261E', cls: 'bg-destructive text-background' },
+];
+
+const shadows = ['shadow-xs', 'shadow-sm', 'shadow-md', 'shadow-lg'];
+---
+
+<Base
+  title="TituLateFADE — Verificación del sistema visual"
+  description="Página de verificación del andamiaje: tokens OKLCH, tipografía autoalojada y efectos (SPEC 01)."
+>
+  <main class="fade-in mx-auto max-w-3xl px-4 py-12">
+    <header class="mb-12">
+      <p class="text-sm font-semibold uppercase tracking-wide text-gold-strong">
+        Verificación del sistema
+      </p>
+      <h1 class="mt-2 font-display text-4xl font-bold tracking-tight md:text-5xl">
+        TituLateFADE
+      </h1>
+      <p class="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+        Andamiaje visual: tokens OKLCH, tipografía autoalojada y efectos.
+        No es contenido real; solo comprueba el sistema del
+        <span class="font-mono text-sm">SPEC 01</span>.
+      </p>
+    </header>
+
+    <!-- 1. Colores de marca -->
+    <section class="mb-12">
+      <h2 class="mb-4 border-b border-border pb-2 font-display text-2xl font-bold">
+        Colores de marca
+      </h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {brandColors.map((c) => (
+          <div class={`flex h-24 flex-col justify-between rounded-lg p-4 ${c.cls}`}>
+            <span class="text-sm font-semibold">{c.name}</span>
+            <span class="font-mono text-xs opacity-90">{c.hex}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-3 text-sm text-muted-foreground">
+        Texto dorado sobre papel usa
+        <span class="font-semibold text-gold-strong">text-gold-strong</span>, nunca
+        <span class="text-gold">text-gold</span> (bajo contraste).
+      </p>
+    </section>
+
+    <!-- 2. Tokens semánticos -->
+    <section class="mb-12">
+      <h2 class="mb-4 border-b border-border pb-2 font-display text-2xl font-bold">
+        Tokens semánticos
+      </h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-5">
+        {semanticColors.map((c) => (
+          <div class={`flex h-24 flex-col justify-between rounded-lg p-4 ${c.cls}`}>
+            <span class="text-sm font-semibold">{c.name}</span>
+            <span class="font-mono text-xs opacity-90">{c.hex}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. Tipografía -->
+    <section class="mb-12">
+      <h2 class="mb-4 border-b border-border pb-2 font-display text-2xl font-bold">
+        Tipografía
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Geist Sans -->
+        <div>
+          <p class="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+            Geist Sans · font-sans
+          </p>
+          <p class="font-sans text-5xl font-extrabold tracking-tight">Aa Bb Cc 123</p>
+          <p class="font-sans text-2xl font-bold">Título de sección — 700</p>
+          <p class="font-sans text-base leading-relaxed">
+            Cuerpo de texto en Geist Sans, peso normal (400) con interlineado holgado
+            para lectura cómoda de párrafos.
+          </p>
+          <p class="font-sans text-sm font-semibold uppercase tracking-wide">
+            Eyebrow / label — 600
+          </p>
+        </div>
+
+        <!-- Geist Mono -->
+        <div>
+          <p class="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+            Geist Mono · font-mono
+          </p>
+          <p class="font-mono text-2xl">Aa Bb Cc 0123456789</p>
+          <p class="font-mono text-sm">const radius = "0.625rem"; // 10px</p>
+        </div>
+
+        <!-- Montserrat Alternates (display) -->
+        <div>
+          <p class="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+            Montserrat Alternates · font-display
+          </p>
+          <p class="font-display text-3xl font-bold">Display 700 — bold</p>
+          <p class="font-display text-3xl font-medium">Display 500 — medium</p>
+          <p class="mt-1 text-sm text-muted-foreground">
+            Los pesos 500 y 700 deben distinguirse claramente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Radio -->
+    <section class="mb-12">
+      <h2 class="mb-4 border-b border-border pb-2 font-display text-2xl font-bold">
+        Border radius
+      </h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="flex h-20 items-center justify-center rounded-md bg-secondary font-mono text-sm">
+          rounded-md
+        </div>
+        <div class="flex h-20 items-center justify-center rounded-xl bg-secondary font-mono text-sm">
+          rounded-xl
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Sombras -->
+    <section class="mb-12">
+      <h2 class="mb-4 border-b border-border pb-2 font-display text-2xl font-bold">
+        Escala de sombras
+      </h2>
+      <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        {shadows.map((s) => (
+          <div class={`flex h-20 items-center justify-center rounded-xl bg-card font-mono text-sm ${s}`}>
+            {s}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 6. fade-in -->
+    <section>
+      <h2 class="mb-4 border-b border-border pb-2 font-display text-2xl font-bold">
+        Efecto fade-in
+      </h2>
+      <div class="fade-in rounded-xl bg-card p-6 shadow-md">
+        <p class="font-display text-lg font-medium">Este bloque usa <span class="font-mono">.fade-in</span></p>
+        <p class="mt-1 text-sm text-muted-foreground">
+          Entra con una transición de opacidad al cargar (animación fadeIn 0.5s).
+        </p>
+      </div>
+    </section>
+  </main>
+</Base>

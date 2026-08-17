@@ -1,0 +1,16 @@
+---
+// Lista de modalidades (SPEC 02 §Paso 5).
+// Encapsula la lógica de datos: consume la collection y la ordena aquí, no en
+// la página. `getCollection` devuelve orden NO determinista → `.sort()` por el
+// campo `orden` para un render estable.
+import { getCollection } from 'astro:content';
+import ModalidadCard from './ModalidadCard.astro';
+
+const modalidades = (await getCollection('modalidades')).sort(
+  (a, b) => a.data.orden - b.data.orden,
+);
+---
+
+<section class="fade-in mx-auto max-w-2xl px-4 pt-12 pb-24">
+  {modalidades.map((m) => <ModalidadCard {...m.data} />)}
+</section>

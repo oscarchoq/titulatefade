@@ -1,0 +1,32 @@
+# Modalidades de titulación (FADE-UPT) — fuente única de la Home.
+# Editar/añadir/reordenar entradas aquí cambia la Home sin tocar ningún .astro.
+# Cada entrada requiere un `id` único (clave de la entrada; NO va en el schema Zod).
+# Descripciones provisionales: CONTENT.md §1 las marca "pendiente redactar".
+
+- id: tesis
+  orden: 1
+  articulo: "Art. 20"
+  titulo: "Tesis Convencional"
+  descripcion: "Formato clásico: dogmática, empírica-cualitativa o empírica-cuantitativa."
+  href: "#"
+
+- id: tesis-articulo
+  orden: 2
+  articulo: "Art. 32"
+  titulo: "Tesis en Formato de Artículo"
+  descripcion: "Investigación con estructura de artículo científico, lista para publicar en revista indexada."
+  href: "#"
+
+- id: informe-experiencia
+  orden: 3
+  articulo: "Art. 35-a"
+  titulo: "Informe de Experiencia Profesional"
+  descripcion: "Para bachilleres con mínimo 3 años (36 meses) de experiencia laboral acreditada."
+  href: "#"
+
+- id: informe-casos
+  orden: 4
+  articulo: "Art. 35-b"
+  titulo: "Informe de Estudio de Casos"
+  descripcion: "Análisis crítico de dos expedientes reales (uno civil y otro de otra materia), con mínimo 6 meses de experiencia tras egresar."
+  href: "#"

@@ -1,0 +1,42 @@
+---
+// Una fila de modalidad (SPEC 02 §Paso 4).
+// Hover (3 microinteracciones): el cuadro de artículo se rellena de dorado y
+// crece; toda la fila escala mínimamente; la flecha se desplaza. `group` en el
+// <a> coordina los tres. Texto claro sobre dorado = `text-background` (papel).
+interface Props {
+  articulo: string;
+  titulo: string;
+  descripcion: string;
+  href: string;
+}
+
+const { articulo, titulo, descripcion, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group flex items-center gap-4 border-b border-border px-4 py-5 transition-transform hover:scale-[1.01] hover:bg-accent"
+>
+  <span
+    class="inline-flex w-24 shrink-0 items-center justify-center whitespace-nowrap rounded-md border border-gold py-2 text-sm font-semibold text-gold transition-all group-hover:scale-105 group-hover:bg-gold group-hover:text-background"
+  >
+    {articulo}
+  </span>
+
+  <div class="flex-1">
+    <p class="text-lg font-semibold text-foreground">{titulo}</p>
+    <p class="mt-1 text-sm text-muted-foreground">{descripcion}</p>
+  </div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="size-5 shrink-0 transition-transform group-hover:translate-x-1"
+    aria-hidden="true"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+  </svg>
+</a>
