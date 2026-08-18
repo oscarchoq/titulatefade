@@ -22,7 +22,7 @@ const etapasTesis = defineCollection({
       .array(
         z.object({
           nombre: z.string(),
-          archivo: z.string(),            // ruta en /public (placeholder por ahora)
+          archivo: z.string(),            // URL del documento (enlace de Drive, abre en pestaña nueva); placeholder "#" por ahora
           formato: z.string().optional(), // "PDF" | "DOCX"
         }),
       )

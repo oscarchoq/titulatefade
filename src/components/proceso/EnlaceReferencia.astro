@@ -1,0 +1,21 @@
+---
+// Enlace de referencia externo (p. ej. a Google Drive): abre en una pestaña nueva
+// un documento para que el estudiante lo VEA y decida si lo descarga. Mismo estilo
+// visual que GuiaEnlace (subrayado dorado inline), pero su acción NO es abrir el
+// modal de guía, sino navegar a un enlace real. `href` queda como placeholder ("#")
+// hasta que se coloquen los enlaces de Drive reales (se hará en un spec futuro).
+interface Props {
+  href?: string;
+}
+
+const { href = '#' } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="font-medium text-gold-strong underline decoration-gold-strong/40 underline-offset-2 transition-colors hover:decoration-gold-strong"
+>
+  <slot />
+</a>
