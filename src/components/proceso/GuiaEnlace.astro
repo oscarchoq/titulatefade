@@ -1,0 +1,18 @@
+---
+// Enlace de guía en prosa. Placeholder inerte: en el futuro abrirá el modal de
+// imagen de Guías Rápidas; hoy solo es texto subrayado dorado sin comportamiento.
+interface Props {
+  titulo: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<button
+  type="button"
+  data-guia={titulo}
+  aria-label={`Guía: ${titulo}`}
+  class="inline cursor-pointer bg-transparent p-0 font-medium text-gold-strong underline decoration-gold-strong/40 underline-offset-2 transition-colors hover:decoration-gold-strong"
+>
+  <slot />
+</button>

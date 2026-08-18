@@ -8,7 +8,7 @@
   articulo: "Art. 20"
   titulo: "Tesis Convencional"
   descripcion: "Formato clásico: dogmática, empírica-cualitativa o empírica-cuantitativa."
-  href: "#"
+  href: "/tesis-convencional"
 
 - id: tesis-articulo
   orden: 2

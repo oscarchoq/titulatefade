@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 
 const modalidades = defineCollection({
   loader: file('src/data/modalidades.yaml'),
@@ -12,4 +12,32 @@ const modalidades = defineCollection({
   }),
 });
 
-export const collections = { modalidades };
+const etapasTesis = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: 'src/data/etapas-tesis' }),
+  schema: z.object({
+    orden: z.number(),                 // orden en el riel (getCollection NO garantiza orden)
+    titulo: z.string(),                // nombre real, usado en riel Y como título del bloque
+    estado: z.enum(['completo', 'pendiente']).default('completo'), // andamiaje v1
+    costo: z.string().optional(),      // "S/ 300.00"
+    codigoTasa: z.string().optional(), // "15935"
+    conceptoTasa: z.string().optional(),
+    tramite: z
+      .object({
+        destinatario: z.string(),
+        tipo: z.string(),
+        asunto: z.string(),
+      })
+      .optional(),
+    plantillas: z
+      .array(
+        z.object({
+          nombre: z.string(),
+          archivo: z.string(),            // ruta en /public (placeholder por ahora)
+          formato: z.string().optional(), // "PDF" | "DOCX"
+        }),
+      )
+      .default([]),
+  }),
+});
+
+export const collections = { modalidades, etapasTesis };

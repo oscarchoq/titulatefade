@@ -1,0 +1,144 @@
+---
+// Artículo de una etapa del proceso. Genérico y prop-driven. Compone la prosa
+// (via <slot />) con TramiteDatos y DescargasEtapa. Va oculto salvo cuando es la
+// etapa activa; el swap por JS alterna `hidden` según `data-etapa`.
+//
+// Las flechas prev/next llevan `data-nav="prev|next"`: el swap las resuelve de
+// forma relativa a la etapa activa (atributo-driven, sirve a cualquier proceso).
+// `esPrimera`/`esUltima` deshabilitan la flecha correspondiente.
+//
+// El título de cada bloque es el NOMBRE REAL de la etapa, sin prefijo "Fase N".
+import TramiteDatos from './TramiteDatos.astro';
+import DescargasEtapa from './DescargasEtapa.astro';
+
+interface Tramite {
+  destinatario: string;
+  tipo: string;
+  asunto: string;
+}
+
+interface Plantilla {
+  nombre: string;
+  archivo: string;
+  formato?: string;
+}
+
+interface Props {
+  id: string;
+  titulo: string;
+  estado?: 'completo' | 'pendiente';
+  costo?: string;
+  codigoTasa?: string;
+  conceptoTasa?: string;
+  tramite?: Tramite;
+  plantillas?: Plantilla[];
+  esPrimera?: boolean;
+  esUltima?: boolean;
+  activa?: boolean;
+}
+
+const {
+  id,
+  titulo,
+  estado = 'completo',
+  costo,
+  codigoTasa,
+  conceptoTasa,
+  tramite,
+  plantillas = [],
+  esPrimera = false,
+  esUltima = false,
+  activa = false,
+} = Astro.props;
+
+const pendiente = estado === 'pendiente';
+---
+
+<article
+  data-etapa={id}
+  hidden={!activa}
+  class="fade-in flex-grow"
+  aria-labelledby={`etapa-${id}-titulo`}
+>
+  <header class="flex items-start justify-between gap-4">
+    <h2
+      id={`etapa-${id}-titulo`}
+      class="font-display text-2xl font-bold text-foreground sm:text-3xl"
+    >
+      {titulo}
+    </h2>
+
+    <div class="flex shrink-0 items-center gap-1 pt-1">
+      <button
+        type="button"
+        data-nav="prev"
+        disabled={esPrimera}
+        aria-label="Etapa anterior"
+        class="inline-flex size-9 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        data-nav="next"
+        disabled={esUltima}
+        aria-label="Siguiente etapa"
+        class="inline-flex size-9 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  {
+    pendiente ? (
+      <div class="mt-8 rounded-lg border border-dashed border-border bg-muted/40 px-6 py-16 text-center">
+        <p class="text-sm font-medium text-muted-foreground">Contenido en preparación.</p>
+      </div>
+    ) : (
+      <>
+        <div class="mt-6 max-w-none text-foreground [&_a]:text-gold-strong [&_p]:mt-4 [&_p]:leading-relaxed [&_p:first-child]:mt-0 [&_strong]:font-semibold">
+          <slot />
+        </div>
+
+        <TramiteDatos
+          costo={costo}
+          codigoTasa={codigoTasa}
+          conceptoTasa={conceptoTasa}
+          tramite={tramite}
+        />
+
+        <DescargasEtapa plantillas={plantillas} />
+      </>
+    )
+  }
+
+  <footer class="mt-8 flex items-center justify-between border-t border-border pt-6">
+    <button
+      type="button"
+      data-nav="prev"
+      disabled={esPrimera}
+      class="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+      Anterior
+    </button>
+    <button
+      type="button"
+      data-nav="next"
+      disabled={esUltima}
+      class="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+    >
+      Siguiente
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  </footer>
+</article>

@@ -1,0 +1,56 @@
+---
+// Tarjeta "Formatos de esta etapa": lista de plantillas descargables de la etapa
+// (nombre + formato en font-mono + botón de descarga). Prop-driven y genérico.
+// El título NO menciona "fase". Solo se renderiza si recibe plantillas.
+interface Plantilla {
+  nombre: string;
+  archivo: string;
+  formato?: string;
+}
+
+interface Props {
+  plantillas?: Plantilla[];
+}
+
+const { plantillas = [] } = Astro.props;
+---
+
+{
+  plantillas.length > 0 && (
+    <div class="my-6 rounded-lg border border-border bg-card p-5">
+      <h3 class="text-sm font-semibold tracking-wide text-foreground uppercase">Formatos de esta etapa</h3>
+
+      <ul class="mt-4 divide-y divide-border">
+        {plantillas.map((plantilla) => (
+          <li class="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-sm font-medium text-foreground">{plantilla.nombre}</p>
+              {plantilla.formato && (
+                <p class="mt-0.5 font-mono text-xs text-muted-foreground">{plantilla.formato}</p>
+              )}
+            </div>
+
+            <a
+              href={plantilla.archivo}
+              download
+              class="group inline-flex shrink-0 items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            >
+              Descargar
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 transition-transform group-hover:translate-y-0.5"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

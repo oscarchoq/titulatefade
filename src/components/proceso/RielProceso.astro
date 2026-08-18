@@ -1,0 +1,53 @@
+---
+// Riel vertical sticky de etapas. Genérico y prop-driven. Un nodo (botón con
+// `data-etapa={id}`) por etapa; la etiqueta es el NOMBRE REAL (`titulo`), nunca
+// "Fase N". El swap por JS resalta el nodo activo (data-activa) según la etapa
+// visible. Nodo activo: punto navy relleno + texto navy/bold; inactivos en
+// muted-foreground.
+interface Etapa {
+  id: string;
+  titulo: string;
+}
+
+interface Props {
+  etapas: Etapa[];
+  activaId: string;
+}
+
+const { etapas, activaId } = Astro.props;
+---
+
+<nav aria-label="Etapas del proceso" class="sticky top-8">
+  <ol class="relative">
+    {/* línea vertical que une los puntos */}
+    <span
+      class="absolute top-2 bottom-2 left-[7px] w-px bg-border"
+      aria-hidden="true"
+    ></span>
+
+    {
+      etapas.map((etapa) => {
+        const activa = etapa.id === activaId;
+        return (
+          <li>
+            <button
+              type="button"
+              data-etapa={etapa.id}
+              data-activa={activa ? 'true' : undefined}
+              aria-current={activa ? 'step' : undefined}
+              class="group flex w-full items-center gap-3 py-2.5 text-left"
+            >
+              <span
+                class="relative z-10 inline-flex size-3.5 shrink-0 items-center justify-center rounded-full border-2 border-border bg-background transition-colors group-data-[activa=true]:border-primary group-data-[activa=true]:bg-primary group-hover:border-primary"
+                aria-hidden="true"
+              />
+              <span class="text-sm text-muted-foreground transition-colors group-data-[activa=true]:font-semibold group-data-[activa=true]:text-foreground group-hover:text-foreground">
+                {etapa.titulo}
+              </span>
+            </button>
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
