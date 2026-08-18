@@ -1,21 +1,15 @@
 ---
 // Artículo de una etapa del proceso. Genérico y prop-driven. Compone la prosa
-// (via <slot />) con TramiteDatos y DescargasEtapa. Va oculto salvo cuando es la
-// etapa activa; el swap por JS alterna `hidden` según `data-etapa`.
+// (via <slot />) con DescargasEtapa. Los datos de trámite y pago ahora viven en
+// el cuerpo MDX (como componentes), no aquí. Va oculto salvo cuando es la etapa
+// activa; el swap por JS alterna `hidden` según `data-etapa`.
 //
 // Las flechas prev/next llevan `data-nav="prev|next"`: el swap las resuelve de
 // forma relativa a la etapa activa (atributo-driven, sirve a cualquier proceso).
 // `esPrimera`/`esUltima` deshabilitan la flecha correspondiente.
 //
 // El título de cada bloque es el NOMBRE REAL de la etapa, sin prefijo "Fase N".
-import TramiteDatos from './TramiteDatos.astro';
 import DescargasEtapa from './DescargasEtapa.astro';
-
-interface Tramite {
-  destinatario: string;
-  tipo: string;
-  asunto: string;
-}
 
 interface Plantilla {
   nombre: string;
@@ -27,10 +21,6 @@ interface Props {
   id: string;
   titulo: string;
   estado?: 'completo' | 'pendiente';
-  costo?: string;
-  codigoTasa?: string;
-  conceptoTasa?: string;
-  tramite?: Tramite;
   plantillas?: Plantilla[];
   esPrimera?: boolean;
   esUltima?: boolean;
@@ -41,10 +31,6 @@ const {
   id,
   titulo,
   estado = 'completo',
-  costo,
-  codigoTasa,
-  conceptoTasa,
-  tramite,
   plantillas = [],
   esPrimera = false,
   esUltima = false,
@@ -101,16 +87,9 @@ const pendiente = estado === 'pendiente';
       </div>
     ) : (
       <>
-        <div class="mt-6 max-w-none text-foreground [&_a]:text-gold-strong [&_p]:mt-4 [&_p]:leading-relaxed [&_p:first-child]:mt-0 [&_strong]:font-semibold">
+        <div class="mt-6 max-w-none text-foreground [&_a]:text-gold-strong [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-foreground [&_p]:mt-4 [&_p]:text-justify [&_p]:leading-relaxed [&_p:first-child]:mt-0 [&_strong]:font-semibold">
           <slot />
         </div>
-
-        <TramiteDatos
-          costo={costo}
-          codigoTasa={codigoTasa}
-          conceptoTasa={conceptoTasa}
-          tramite={tramite}
-        />
 
         <DescargasEtapa plantillas={plantillas} />
       </>

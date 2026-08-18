@@ -18,16 +18,6 @@ const etapasTesis = defineCollection({
     orden: z.number(),                 // orden en el riel (getCollection NO garantiza orden)
     titulo: z.string(),                // nombre real, usado en riel Y como título del bloque
     estado: z.enum(['completo', 'pendiente']).default('completo'), // andamiaje v1
-    costo: z.string().optional(),      // "S/ 300.00"
-    codigoTasa: z.string().optional(), // "15935"
-    conceptoTasa: z.string().optional(),
-    tramite: z
-      .object({
-        destinatario: z.string(),
-        tipo: z.string(),
-        asunto: z.string(),
-      })
-      .optional(),
     plantillas: z
       .array(
         z.object({

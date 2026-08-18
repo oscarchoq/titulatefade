@@ -1,0 +1,43 @@
+---
+// Bloque de pago(s) de una etapa, con filo dorado (borde izquierdo, sin caja ni
+// fondo — reutiliza el estilo del blockquote de detalle.html). Prop-driven y
+// genérico: soporta 0, 1, 2 o más pagos por etapa. Con 0 pagos no renderiza nada.
+// Presenta cada pago con el mismo formato apilado que FichaTramite (etiqueta
+// discreta + valor); monto y código van en font-mono (Geist Mono para datos).
+interface Pago {
+  monto: string;
+  codigo: string;
+  concepto?: string;
+}
+
+interface Props {
+  pagos: Pago[];
+}
+
+const { pagos } = Astro.props;
+---
+
+{
+  pagos.length > 0 && (
+    <div class="my-6 border-l-2 border-gold pl-5">
+      {pagos.map((pago, i) => (
+        <dl class:list={['grid gap-3', i > 0 && 'mt-4 border-t border-border pt-4']}>
+          <div>
+            <dt class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Código de tasa</dt>
+            <dd class="mt-0.5 font-mono text-foreground">{pago.codigo}</dd>
+          </div>
+          {pago.concepto && (
+            <div>
+              <dt class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Concepto</dt>
+              <dd class="mt-0.5 text-foreground">{pago.concepto}</dd>
+            </div>
+          )}
+          <div>
+            <dt class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Monto</dt>
+            <dd class="mt-0.5 font-mono font-semibold text-foreground">{pago.monto}</dd>
+          </div>
+        </dl>
+      ))}
+    </div>
+  )
+}

@@ -1,0 +1,31 @@
+---
+// Ficha con los datos del trámite de una etapa (destinatario / tipo / asunto),
+// con filo dorado (borde izquierdo, sin caja ni fondo — reutiliza el estilo del
+// blockquote de detalle.html). Prop-driven y genérico. Cada campo va apilado:
+// etiqueta discreta (muted-foreground) + valor (foreground), pensado para
+// copiar/pegar en Mesa de Partes Virtual.
+interface Props {
+  destinatario: string;
+  tipo: string;
+  asunto: string;
+}
+
+const { destinatario, tipo, asunto } = Astro.props;
+
+const campos = [
+  { etiqueta: 'Destinatario', valor: destinatario },
+  { etiqueta: 'Tipo de trámite', valor: tipo },
+  { etiqueta: 'Asunto', valor: asunto },
+];
+---
+
+<dl class="my-6 grid gap-3 border-l-2 border-gold pl-5">
+  {
+    campos.map((campo) => (
+      <div>
+        <dt class="text-xs font-medium tracking-wide text-muted-foreground uppercase">{campo.etiqueta}</dt>
+        <dd class="mt-0.5 text-foreground">{campo.valor}</dd>
+      </div>
+    ))
+  }
+</dl>

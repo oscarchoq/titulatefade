@@ -2,13 +2,6 @@
 orden: 1
 titulo: "Inscripción de tema"
 estado: "completo"
-costo: "S/ 300.00"
-codigoTasa: "15935"
-conceptoTasa: "1RA FASE: PROYECTO DE TESIS"
-tramite:
-  destinatario: "FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
-  tipo: "PRIMERA FASE (Título profesional)"
-  asunto: "FICHA DE TEMA"
 plantillas:
   - { nombre: "FUT de Inscripción de Tema", archivo: "/plantillas/tesis/FUT_TEMA.pdf", formato: "PDF" }
   - { nombre: "Formato de Ficha de Tema (Anexo 2)", archivo: "/plantillas/tesis/ficha-tema.docx", formato: "DOCX" }
@@ -16,33 +9,54 @@ plantillas:
   - { nombre: "Normas de Estilo", archivo: "/plantillas/tesis/normas-de-estilo.docx", formato: "DOCX" }
 ---
 import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
 
 El primer paso es inscribir oficialmente tu tema de investigación ante el Decanato
 de la Facultad. Aquí no presentas todavía la tesis desarrollada, sino la propuesta
 del tema y su plan, para que la Universidad te asigne una línea de investigación y
 un docente asesor.
 
-Empieza por reunir tu expediente en un solo **PDF N.° 1**, que junta dos documentos:
-el **FUT de Inscripción de Tema** (la solicitud dirigida al Decanato) y la
-**Ficha de Tema**, que corresponde al Anexo 2 del Reglamento de Grados y Títulos.
-Completa ambos con cuidado antes de digitalizarlos juntos en un único archivo.
+### Prepara
 
-Con el expediente listo, <GuiaEnlace titulo="Cómo pagar en la Pasarela de Pagos">paga
-la tasa</GuiaEnlace> de **S/ 300.00** en la Pasarela de Pagos de la UPT para tener la
-boleta electrónica a la mano antes de enviar nada. El pago es parte del mismo trámite,
-no un trámite aparte.
+Reúne tu expediente en un solo **PDF N.° 1**, que junta dos documentos: el
+**FUT de Inscripción de Tema** —la solicitud dirigida al Decanato— y la
+**Ficha de Tema**, que corresponde al **Anexo 2** del Reglamento de Grados y Títulos.
+Completa ambos con cuidado y digitalízalos juntos en un único archivo, en ese orden.
 
-Finalmente, <GuiaEnlace titulo="Cómo registrar un trámite en Mesa de Partes Virtual">envía
-un único trámite</GuiaEnlace> por Mesa de Partes Virtual adjuntando todo junto en el
-mismo envío: el **PDF N.° 1** y la **boleta electrónica** (serie y número de comprobante).
-Recuerda que es un solo trámite con todo adjunto, nunca dos envíos separados.
+### Paga
 
-Después de enviarlo, la **Unidad de Investigación** evalúa tu solicitud y emite un
-informe que pasa al **Decanato de la Facultad**, el cual expide una **Resolución de
-Decanato**. Cuando te notifiquen, la resolución te confirmará tres cosas: la línea de
-investigación asignada, el docente asesor asignado y la inscripción oficial de tu tema.
+Antes de enviar nada, paga la tasa en la Pasarela de Pagos de la UPT para tener la
+**boleta electrónica** a la mano. Guarda la serie y el número del comprobante.
 
-A partir de esa notificación, tu asesor de plan cuenta con **tres meses** para
-acompañarte en el desarrollo del plan de tesis. Al culminar, emite un **Informe de
-Culminación de Asesoría de Plan**, y con eso quedas listo para continuar con la
-designación del jurado evaluador.
+<PagoEtapa pagos={[{ monto: "S/ 300.00", codigo: "15935", concepto: "1RA FASE: PROYECTO DE TESIS" }]} />
+
+### Envía
+
+Con el expediente y la boleta listos, registra **una única solicitud** por
+Mesa de Partes Virtual. Adjunta en el mismo envío el **PDF N.° 1** y la
+**boleta electrónica** (serie y número de comprobante). Es un solo trámite con todo
+adjunto, no dos envíos separados.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="PRIMERA FASE (Título profesional)"
+  asunto="FICHA DE TEMA" />
+
+Si tienes dudas al llenarlo, mira
+<GuiaEnlace titulo="Cómo registrar un trámite en Mesa de Partes Virtual">cómo
+registrar el trámite</GuiaEnlace> paso a paso.
+
+### Qué recibirás
+
+La **Unidad de Investigación** evalúa tu solicitud y emite un informe que pasa al
+**Decanato de la Facultad**, el cual expide una **Resolución de Decanato**. Cuando te
+notifiquen, la resolución te confirmará tres cosas: la **línea de investigación**
+asignada, el **docente asesor** asignado y la **inscripción oficial** de tu tema.
+
+A partir de esa notificación tienes un plazo **máximo de 3 meses** para desarrollar y
+afinar tu plan de tesis junto a tu asesor. Como resultado de ese trabajo —y dentro del
+plazo—, el asesor emite el **Informe de Culminación de Asesoría de Plan**
+(<GuiaEnlace titulo="Así debe verse el Informe de Culminación de Asesoría de Plan">así
+debe verse</GuiaEnlace>; es un ejemplo de referencia, tú no lo preparas). Con esto quedas
+listo para la designación del **jurado evaluador**.
