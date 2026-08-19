@@ -43,7 +43,7 @@ const pendiente = estado === 'pendiente';
 <article
   data-etapa={id}
   hidden={!activa}
-  class="fade-in flex-grow"
+  class:list={[activa && 'fade-in', 'flex-grow']}
   aria-labelledby={`etapa-${id}-titulo`}
 >
   <header class="flex items-start justify-between gap-4">

@@ -107,3 +107,25 @@
   -webkit-animation: fadeIn 0.5s both;
   animation: fadeIn 0.5s both;
 }
+
+/* Deslizamiento direccional entre etapas (SPEC 06):
+   avanzar entra desde la derecha, retroceder desde la izquierda.
+   translateX pequeño (sutil, no un barrido de pantalla). */
+@keyframes slideInFromRight {
+  0%   { opacity: 0.8; transform: translateX(1.5rem); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromLeft {
+  0%   { opacity: 0.8; transform: translateX(-1.5rem); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.slide-from-right { animation: slideInFromRight 0.35s ease-out both; }
+.slide-from-left  { animation: slideInFromLeft  0.35s ease-out both; }
+
+/* Accesibilidad de movimiento: sin translateX, solo un fade discreto. */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .slide-from-right,
+  .slide-from-left { animation: fadeIn 0.2s both; }
+}

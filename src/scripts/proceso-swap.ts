@@ -8,6 +8,31 @@
 //   así que basta con que solo el artículo activo esté a la vista.
 //
 // Degradación: sin JS, la primera etapa se renderiza visible por defecto.
+// Scroll suave propio al tope: ease-out de duración fija (no depende de la
+// distancia como el `smooth` nativo, que se siente irregular). Con
+// prefers-reduced-motion salta al instante.
+function scrollArriba(): void {
+  const inicio = window.scrollY;
+  if (inicio === 0) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const duracion = 500;
+  const t0 = performance.now();
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+  function paso(ahora: number): void {
+    const t = Math.min((ahora - t0) / duracion, 1);
+    window.scrollTo(0, inicio * (1 - easeOut(t)));
+    if (t < 1) requestAnimationFrame(paso);
+  }
+  requestAnimationFrame(paso);
+}
+
 function initProcesoSwap(): void {
   const articulos = Array.from(
     document.querySelectorAll<HTMLElement>('article[data-etapa]'),
@@ -19,7 +44,9 @@ function initProcesoSwap(): void {
     document.querySelectorAll<HTMLElement>('nav [data-etapa]'),
   );
 
-  function activar(id: string): void {
+  type Direccion = 'right' | 'left' | 'none';
+
+  function activar(id: string, dir: Direccion = 'none'): void {
     if (!orden.includes(id)) return;
 
     articulos.forEach((a) => {
@@ -35,11 +62,34 @@ function initProcesoSwap(): void {
         b.removeAttribute('aria-current');
       }
     });
+
+    // Desliza la etapa entrante según el sentido de navegación (SPEC 06).
+    // Reinicio: quitar clases → forzar reflow → añadir, para que el keyframe
+    // re-dispare aunque se navegue rápido.
+    if (dir !== 'none') {
+      const destino = articulos.find((a) => a.dataset.etapa === id);
+      if (destino) {
+        destino.classList.remove('slide-from-right', 'slide-from-left');
+        void destino.offsetWidth;
+        destino.classList.add(dir === 'right' ? 'slide-from-right' : 'slide-from-left');
+      }
+
+      // Volver arriba al cambiar de etapa: si venías leyendo el final de una
+      // etapa larga, la siguiente empieza desde su inicio, no desde ese foco.
+      scrollArriba();
+    }
   }
 
-  // Clic en un nodo del riel → activa esa etapa.
+  // Clic en un nodo del riel → activa esa etapa, con dirección según el índice.
   rielBtns.forEach((b) => {
-    b.addEventListener('click', () => activar(b.dataset.etapa ?? ''));
+    b.addEventListener('click', () => {
+      const id = b.dataset.etapa ?? '';
+      const actual = articulos.find((a) => !a.hidden);
+      const i = actual ? orden.indexOf(actual.dataset.etapa ?? '') : -1;
+      const j = orden.indexOf(id);
+      const dir: Direccion = j === i ? 'none' : j > i ? 'right' : 'left';
+      activar(id, dir);
+    });
   });
 
   // Flechas prev/next → una etapa antes/después de la visible.
@@ -50,7 +100,7 @@ function initProcesoSwap(): void {
       const i = orden.indexOf(actual.dataset.etapa ?? '');
       const j = btn.dataset.nav === 'next' ? i + 1 : i - 1;
       if (j < 0 || j >= orden.length) return;
-      activar(orden[j]);
+      activar(orden[j], btn.dataset.nav === 'next' ? 'right' : 'left');
     });
   });
 }
