@@ -1,7 +1,69 @@
 ---
 orden: 3
 titulo: "Asesor de tesis"
-estado: "pendiente"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT para Asesor de Tesis", archivo: "https://drive.google.com/file/d/1b5gUqsuNKrdQsgr-hbMssM6jE6xUQ6zy/view?usp=drive_link", formato: "PDF" }
+  - { nombre: "Modelos de Tesis", archivo: "https://docs.google.com/document/d/1m7nTZF0dJmgzKu1eiDkxU2b57ViiJ-ng", formato: "DOCX" }
 ---
+import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
 
-Contenido en preparación.
+<p class="text-sm text-muted-foreground">Llegas a este paso con el <strong>informe favorable del jurado evaluador</strong> sobre tu plan de tesis.</p>
+
+Con el visto bueno del jurado, ahora corresponde que el Decanato **apruebe formalmente
+tu plan de tesis** y **ratifique a tu asesor** —o, si lo necesitas, apruebe el **cambio
+a uno nuevo**— para que te acompañe durante el desarrollo de la investigación.
+
+### Prepara
+
+Arma un solo **PDF N.° 1** que junte la solicitud y sus respaldos: el
+**FUT de aprobación del plan de tesis y ratificación del asesor** —dirigido al
+Decanato, mira
+<EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—,
+el **Informe favorable del jurado evaluador**, la **Resolución de designación de asesor
+de plan** y tu **Plan de tesis en PDF**. Digitalízalos juntos en un único archivo, en
+ese orden (<EnlaceReferencia href="https://drive.google.com/file/d/119krbUf2Hjn6yulzwJ8iA77HQl3_55IG/view?usp=drive_link">así debe verse el PDF N.° 1</EnlaceReferencia>).
+
+### Paga
+
+Con el expediente listo, paga la tasa en la Pasarela de Pagos de la UPT para tener la
+**boleta electrónica** a la mano. Guarda la serie y el número del comprobante.
+
+<PagoEtapa pagos={[{ monto: "S/ 350.00", codigo: "15936", concepto: "2DA FASE: DESARROLLO DE TESIS" }]} />
+
+### Envía
+
+Con el expediente y la boleta listos, registra **una única solicitud** por Mesa de
+Partes Virtual y adjunta en el mismo envío el **PDF N.° 1** y la **boleta electrónica**
+(serie y número de comprobante). Es un solo trámite con todo adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Segunda fase (Título profesional)"
+  asunto="Aprobación del plan de tesis y ratificación del asesor" />
+
+Antes de enviarlo, revisa
+<GuiaEnlace titulo="Cómo debería quedar el trámite antes de enviarlo">cómo debería
+quedar tu trámite antes de enviarlo</GuiaEnlace>.
+
+### Y ahora, ¿qué sigue?
+
+La **Unidad de Investigación** evalúa tu solicitud y emite un informe que pasa al
+**Decanato de la Facultad**, el cual expide una **Resolución de Decanato**. Cuando te
+notifiquen, la resolución te confirmará dos cosas: tu **plan de tesis aprobado** y tu
+**asesor de tesis**.
+
+A partir de esa notificación desarrollas la tesis junto a tu asesor, con un plazo de
+**1 año** más **3 meses de prórroga automática**. Al finalizar —y dentro del plazo—, es
+tu **asesor** quien remite al correo de la Unidad de Investigación, con copia a ti, dos
+documentos: el **Informe de culminación de asesoría de tesis**
+(<EnlaceReferencia href="https://docs.google.com/document/d/1ehxr-azwWWqbrcmRT1sVc1eVe6MwLGPU">así debe verse</EnlaceReferencia>; es un ejemplo de
+referencia, tú no lo preparas) y el **Reporte de similitud (Turnitin)**, generado con
+los filtros correctos —Excluir citas: apagado, Excluir bibliografía: apagado y
+coincidencias menores a 20 palabras—. Tú no generas ese reporte, pero conviene que lo
+reconozcas: mira
+<EnlaceReferencia href="https://drive.google.com/file/d/1dBLNqM2lXvsfNMvKOdyExsqvOAj-Zyde/view?usp=drive_link">así debe verse un reporte Turnitin válido</EnlaceReferencia>.
+Con ambos documentos quedas listo para la designación de los **jurados dictaminadores**.
