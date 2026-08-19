@@ -1,16 +1,16 @@
 ---
-// Página del proceso de Tesis Convencional (reglamento vigente).
-// SOLO compone: obtiene las etapas de la collection `etapasTesis`, las ordena,
-// renderiza su cuerpo MDX, y arma el shell reutilizable (Encabezado + Riel +
-// artículos de etapa). Todo el copy/datos viven en los .mdx, no aquí.
+// Página del proceso de Tesis por reglamento anterior (Resolución 221-2025-UPT-CU),
+// para egresados que iniciaron su trámite antes del 16 de marzo de 2026.
+// Réplica del shell de `tesis-convencional.astro`: SOLO compone, pero lee las
+// etapas de la collection propia `etapasTesisOld` (carpeta etapas-tesis-old/).
 import { getCollection, render } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import EncabezadoProceso from '../components/proceso/EncabezadoProceso.astro';
-import RielProceso from '../components/proceso/RielProceso.astro';
-import EtapaArticulo from '../components/proceso/EtapaArticulo.astro';
+import Base from '../../layouts/Base.astro';
+import EncabezadoProceso from '../../components/proceso/EncabezadoProceso.astro';
+import RielProceso from '../../components/proceso/RielProceso.astro';
+import EtapaArticulo from '../../components/proceso/EtapaArticulo.astro';
 
-// getCollection NO garantiza orden → ordenar por `orden` (igual que modalidades).
-const etapas = (await getCollection('etapasTesis')).sort(
+// getCollection NO garantiza orden → ordenar por `orden` (igual que la página vigente).
+const etapas = (await getCollection('etapasTesisOld')).sort(
   (a, b) => a.data.orden - b.data.orden,
 );
 
@@ -29,22 +29,22 @@ const activaId = etapasRender[0]?.id ?? '';
 ---
 
 <Base
-  title="Tesis — Titulación FADE-UPT"
-  description="Guía del proceso de titulación por tesis en la Facultad de Derecho y Ciencias Políticas de la UPT, bajo el reglamento vigente. Recorre cada etapa con sus documentos, pagos y trámites."
+  title="Tesis (reglamento anterior) — Titulación FADE-UPT"
+  description="Guía del proceso de titulación por tesis para egresados de la Facultad de Derecho y Ciencias Políticas de la UPT que iniciaron su trámite antes del 16 de marzo de 2026, regidos por la Resolución 221-2025-UPT-CU."
 >
   <main class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
     <EncabezadoProceso
       titulo="Tesis"
-      descripcion="Recorre el proceso de titulación por tesis bajo el reglamento vigente. Cada etapa reúne, en orden, los documentos que preparas, el pago cuando corresponde y el trámite único que envías por Mesa de Partes Virtual."
-      volverHref="/"
+      descripcion="Si iniciaste tu trámite de titulación antes del 16 de marzo de 2026, te rige la Resolución 221-2025-UPT-CU (reglamento anterior). Recorre aquí cada etapa de ese proceso, con los documentos que preparas, el pago cuando corresponde y el trámite único que envías por Mesa de Partes Virtual."
+      volverHref="/tesis-convencional"
     >
       <p slot="aviso">
-        ¿Iniciaste tu trámite antes del <strong class="font-medium text-foreground">16 de marzo de 2026</strong>?{' '}
+        ¿Iniciaste tu trámite desde el <strong class="font-medium text-foreground">16 de marzo de 2026</strong>?{' '}
         <a
-          href="/tesis-convencional/old"
+          href="/tesis-convencional"
           class="font-medium text-gold-strong underline underline-offset-2 hover:no-underline"
         >
-          Sigue el proceso del reglamento anterior
+          Ve al proceso vigente
         </a>.
       </p>
     </EncabezadoProceso>
@@ -75,6 +75,6 @@ const activaId = etapasRender[0]?.id ?? '';
   </main>
 
   <script>
-    import '../scripts/proceso-swap.ts';
+    import '../../scripts/proceso-swap.ts';
   </script>
 </Base>

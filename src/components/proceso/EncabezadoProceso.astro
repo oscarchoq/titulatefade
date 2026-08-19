@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { titulo, descripcion, volverHref = '/' } = Astro.props;
+
+// Slot opcional para un aviso (p. ej. enlace de derivación a otro proceso).
+// Si no se provee contenido, el encabezado se ve idéntico a antes.
+const tieneAviso = Astro.slots.has('aviso');
 ---
 
 <header class="mb-10">
@@ -35,6 +39,14 @@ const { titulo, descripcion, volverHref = '/' } = Astro.props;
   <p class="mt-4 text-base text-muted-foreground sm:text-lg">
     {descripcion}
   </p>
+
+  {
+    tieneAviso && (
+      <div class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
+        <slot name="aviso" />
+      </div>
+    )
+  }
 
   <hr class="mt-8 border-t border-border" />
 </header>

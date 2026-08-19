@@ -30,4 +30,24 @@ const etapasTesis = defineCollection({
   }),
 });
 
-export const collections = { modalidades, etapasTesis };
+// Reglamento anterior (Resolución 221-2025-UPT-CU): misma estructura de etapas
+// que `etapasTesis` pero colección propia, para que editar una no afecte a la otra.
+const etapasTesisOld = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: 'src/data/etapas-tesis-old' }),
+  schema: z.object({
+    orden: z.number(),
+    titulo: z.string(),
+    estado: z.enum(['completo', 'pendiente']).default('completo'),
+    plantillas: z
+      .array(
+        z.object({
+          nombre: z.string(),
+          archivo: z.string(),
+          formato: z.string().optional(),
+        }),
+      )
+      .default([]),
+  }),
+});
+
+export const collections = { modalidades, etapasTesis, etapasTesisOld };

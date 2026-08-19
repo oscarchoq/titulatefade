@@ -1,0 +1,82 @@
+---
+orden: 5
+titulo: "Jurados examinadores"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT para Jurados Examinadores", archivo: "https://drive.google.com/file/d/16IhLZfJFKG8hYpxmKk-Du1LlKU_BkDHA/view?usp=drive_link", formato: "PDF" }
+---
+import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
+
+<p class="text-sm text-muted-foreground">Llegas a este paso con los <strong>dos (02) dictámenes favorables</strong> de los jurados dictaminadores.</p>
+
+Con los dos dictámenes a favor, ahora corresponde pedir al Decanato que designe a los
+**jurados examinadores** y fije tu **sustentación**. Es el expediente más extenso del
+proceso —reúne todo lo actuado hasta aquí— y trae **dos tasas**: el diploma de título
+profesional y la designación del jurado de sustentación.
+
+### Prepara
+
+Reúne dos archivos. El **PDF N.° 1** junta la solicitud y todos sus respaldos: el
+**FUT para designación de jurados examinadores** —dirigido al Decanato, mira
+<EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—,
+los **dos informes favorables de los dictaminadores**, el **Informe de culminación de
+asesoría de tesis**, el **Reporte de similitud (Turnitin)** de tu asesor, la **Constancia
+de no adeudo**, tu **grado de Bachiller (ambas caras)**, tu **Certificado de prácticas
+pre profesionales** y la **Resolución de designación de jurados dictaminadores**.
+Digitalízalos juntos en un único archivo, en ese orden
+(<EnlaceReferencia href="https://drive.google.com/file/d/1F1QVhJLQjSGQdwoE7VGD8RPKBirwD7JE/view?usp=drive_link">así debe verse el PDF N.° 1</EnlaceReferencia>). El
+**PDF N.° 2** es tu **tesis completa** en versión pregrado
+(<EnlaceReferencia href="https://drive.google.com/file/d/1HVbZiWNumLjSQaaEOERl3Febqz7z1-Kf/view?usp=drive_link">así debe verse el PDF N.° 2</EnlaceReferencia>).
+
+Un par de precisiones sobre ese expediente. La **Constancia de no adeudo** se solicita en
+**Caja** y **no** es lo mismo que el informe económico: son documentos distintos, no los
+confundas. Y si tu **Reporte Turnitin** pesa demasiado para adjuntarlo, puedes enviarlo
+por separado al correo de la **Unidad de Investigación**, **investigacion_fade@upt.pe**.
+
+### Paga
+
+Con el expediente listo, paga en la Pasarela de Pagos de la UPT las **dos tasas** de este
+paso para tener ambas **boletas electrónicas** a la mano. Guarda la serie y el número de
+cada comprobante.
+
+<PagoEtapa pagos={[
+  { monto: "S/ 1,200.00", codigo: "15941", concepto: "Diploma de Título Profesional" },
+  { monto: "S/ 41.00", codigo: "15237", concepto: "Designación de Jurado de Sustentación y Determinación de lugar, Fecha y Hora de Tesis" }
+]} />
+
+¿No encuentras alguno de los códigos en la Pasarela de Pagos? Al ser tasas del reglamento
+anterior, pueden estar deshabilitadas: comunícate con **Caja** para que te las activen.
+
+### Envía
+
+Con el expediente, la tesis y las dos boletas listos, registra **una única solicitud**
+por <EnlaceReferencia href="https://net.upt.edu.pe/tdv/weblogin/login.php">Mesa de Partes Virtual</EnlaceReferencia>
+y adjunta en el mismo envío el **PDF N.° 1**, el **PDF N.° 2**
+y las **dos boletas electrónicas** (serie y número de cada comprobante). Es un solo
+trámite con todo adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Otros varios"
+  asunto="JURADOS EXAMINADORES" />
+
+Antes de enviarlo, revisa <GuiaEnlace titulo="Cómo debería quedar el trámite antes de enviarlo">cómo debe quedar el trámite</GuiaEnlace>.
+
+### Y ahora, ¿qué sigue?
+
+La **Unidad de Investigación** verifica que tu expediente esté completo y, si está
+conforme, lo pasa al **Decanato de la Facultad**. En algún momento de este tramo el
+Decanato te **llamará** para que **acudas con tres (03) ejemplares impresos** de tu tesis:
+cada uno **anillado**, dentro de un **sobre manila** y con tu **nombre por fuera**
+(<EnlaceReferencia href="#">así deben verse los tres ejemplares</EnlaceReferencia>). Se
+usan para el **sorteo del tercer jurado** que completará tu jurado de sustentación.
+
+Luego, el Decanato expide la **resolución** con la **fecha, hora y lugar** de tu
+sustentación, que es un **acto público**. Ten presente dos cosas: los **dos
+dictaminadores** que revisaron tu tesis **serán tus jurados de sustentación** (junto al
+tercero sorteado), y la fecha **no la fija la Unidad de Investigación, sino el Decanato**.
+Una vez que sustentes, quedas listo para el paso final: la publicación en el
+**repositorio**.
