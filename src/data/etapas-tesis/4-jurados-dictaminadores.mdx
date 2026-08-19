@@ -1,7 +1,77 @@
 ---
 orden: 4
 titulo: "Jurados dictaminadores"
-estado: "pendiente"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT para Jurado Dictaminador", archivo: "https://drive.google.com/file/d/1CO2tvXQbv9CrZpOh-xmCqzxchg4EH6vJ/view?usp=drive_link", formato: "PDF" }
+  - { nombre: "Modelos de Tesis", archivo: "https://docs.google.com/document/d/10bOl9GL7dUQ3n3gbLG9IuVD33EcMNBcz", formato: "DOCX" }
 ---
+import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
 
-Contenido en preparación.
+<p class="text-sm text-muted-foreground">Llegas a este paso con el <strong>Informe de culminación de asesoría de tesis</strong> y el <strong>Reporte de similitud (Turnitin)</strong> que emitió tu asesor.</p>
+
+Con la tesis ya desarrollada y el respaldo de tu asesor, ahora corresponde pedir al
+Decanato que designe a los **jurados dictaminadores**: los docentes que revisarán tu
+tesis completa y emitirán su opinión. En este paso pagas una tasa y presentas tu tesis
+terminada.
+
+### Prepara
+
+Reúne dos archivos. El **PDF N.° 1** junta la solicitud y sus respaldos: el
+**FUT para designación de jurado dictaminador** —dirigido al Decanato, mira
+<EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—,
+el **Informe de culminación de asesoría de tesis**, el **Reporte de similitud (Turnitin)**
+de tu asesor y la **Resolución de designación de asesor de tesis**. Digitalízalos juntos
+en un único archivo, en ese orden
+(<EnlaceReferencia href="https://drive.google.com/file/d/1jtZFy2Be_Bsh0THmoRgj9FsL9vyl9QUP/view?usp=drive_link">así debe verse el PDF N.° 1</EnlaceReferencia>). El
+**PDF N.° 2** es tu **tesis completa**, elaborada según el **Anexo 16, 17, 18 o 19** del
+Reglamento de Grados y Títulos, según el modelo que corresponda a tu investigación
+(<EnlaceReferencia href="https://drive.google.com/file/d/1jbppmfhC4pWKghPW_pToPyA0d8srjpUl/view?usp=drive_link">así debe verse el PDF N.° 2</EnlaceReferencia>).
+
+### Paga
+
+Con el expediente listo, paga la tasa en la Pasarela de Pagos de la UPT para tener la
+**boleta electrónica** a la mano. Guarda la serie y el número del comprobante.
+
+<PagoEtapa pagos={[{ monto: "S/ 250.00", codigo: "15937", concepto: "3RA FASE: JURADO DICTAMINADOR" }]} />
+
+### Envía
+
+Con el expediente, la tesis y la boleta listos, registra **una única solicitud** por
+Mesa de Partes Virtual y adjunta en el mismo envío el **PDF N.° 1**, el **PDF N.° 2** y
+la **boleta electrónica** (serie y número de comprobante). Es un solo trámite con todo
+adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Designación de Jurado Dictaminador de Tesis"
+  asunto="Designación de jurado dictaminador de tesis" />
+
+Antes de enviarlo, revisa
+<GuiaEnlace titulo="Cómo debería quedar el trámite antes de enviarlo">cómo debería
+quedar tu trámite antes de enviarlo</GuiaEnlace>.
+
+### Y ahora, ¿qué sigue?
+
+La **Unidad de Investigación** evalúa tu solicitud y emite un informe que pasa al
+**Decanato de la Facultad**, el cual expide una **Resolución de Decanato**. Cuando te
+notifiquen, la designación se comunica por correo tanto a ti como a los **jurados
+dictaminadores**.
+
+A diferencia del jurado evaluador, que revisó tu plan, los dictaminadores revisan tu
+**tesis completa** y emiten su opinión. Conviene que sepas cómo se designan: el **jurado
+evaluador sí puede** ser dictaminador, pero tu **asesor de tesis no**; los docentes
+designados aquí **serán también tus jurados examinadores** en la sustentación; y, como en
+cada paso, **tú no propones** a los jurados. Si su dictamen es favorable, lo remiten por
+correo (<EnlaceReferencia href="https://docs.google.com/document/d/1lRRtTzjg6tC6ETc7g0ERe8MNiUj-JE29">así debe verse el informe de los jurados dictaminadores</EnlaceReferencia>;
+es un ejemplo de referencia, tú no lo preparas). Con **dos dictámenes favorables** quedas
+listo para la designación de los **jurados examinadores**.
+
+### Si hay observaciones
+
+Si los dictaminadores observan tu tesis, tienes un plazo de **10 días hábiles** —contados
+desde la notificación de su informe— para subsanarlas y **remitir la tesis corregida por
+Mesa de Partes Virtual**.
