@@ -4,6 +4,7 @@ import '@fontsource-variable/geist-mono';
 import '@fontsource/montserrat-alternates/500.css';
 import '@fontsource/montserrat-alternates/700.css';
 import '../styles/global.css';
+import PieDePagina from '../components/PieDePagina.astro';
 
 interface Props {
   title: string;
@@ -26,6 +27,11 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <slot />
+
+    {/* Pie de página global (SPEC 09): montado una sola vez, tras <slot />,
+        aparece en todas las páginas que usan Base. Va en flujo normal, antes
+        del <dialog> overlay del visor de Guías (que no se ve afectado). */}
+    <PieDePagina />
 
     {/* Visor global de Guías Rápidas (SPEC 08): un único <dialog> por página,
         reutilizado por todos los GuiaEnlace. Solo imagen (sin texto de paso),
