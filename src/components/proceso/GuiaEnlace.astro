@@ -1,18 +1,38 @@
 ---
-// Enlace de guía en prosa. Placeholder inerte: en el futuro abrirá el modal de
-// imagen de Guías Rápidas; hoy solo es texto subrayado dorado sin comportamiento.
+// Enlace de guía en prosa. Cuando trae `imagen`, actúa como disparador del modal
+// visor de Guías Rápidas (una sola imagen, zoom + arrastre). Sin `imagen`, queda
+// en estado pendiente inerte (atenuado, no clicable) para no abrir un modal vacío.
 interface Props {
   titulo: string;
+  imagen?: string;
 }
 
-const { titulo } = Astro.props;
+const { titulo, imagen } = Astro.props;
+
+const base =
+  "inline bg-transparent p-0 font-medium underline underline-offset-2 transition-colors";
 ---
 
-<button
-  type="button"
-  data-guia={titulo}
-  aria-label={`Guía: ${titulo}`}
-  class="inline cursor-pointer bg-transparent p-0 font-medium text-gold-strong underline decoration-gold-strong/40 underline-offset-2 transition-colors hover:decoration-gold-strong"
->
-  <slot />
-</button>
+{
+  imagen ? (
+    <button
+      type="button"
+      data-guia
+      data-guia-src={imagen}
+      data-guia-alt={titulo}
+      aria-haspopup="dialog"
+      aria-label={`Guía: ${titulo}`}
+      class={`${base} cursor-pointer text-gold-strong decoration-gold-strong/40 hover:decoration-gold-strong`}
+    >
+      <slot />
+    </button>
+  ) : (
+    <span
+      aria-disabled="true"
+      aria-label={`Guía en preparación: ${titulo}`}
+      class={`${base} cursor-default text-gold-strong/50 decoration-gold-strong/20`}
+    >
+      <slot />
+    </span>
+  )
+}
