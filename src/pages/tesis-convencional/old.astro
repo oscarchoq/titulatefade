@@ -1,6 +1,7 @@
 ---
-// Página del proceso de Tesis por reglamento anterior (Resolución 221-2025-UPT-CU),
-// para egresados que iniciaron su trámite antes del 16 de marzo de 2026.
+// Página del proceso de Tesis por reglamento anterior, para egresados que iniciaron su
+// trámite antes del 16 de marzo de 2026 y a quienes les rigen las tasas vigentes antes
+// de esa fecha.
 // Réplica del shell de `tesis-convencional.astro`: SOLO compone, pero lee las
 // etapas de la collection propia `etapasTesisOld` (carpeta etapas-tesis-old/).
 import { getCollection, render } from 'astro:content';
@@ -30,13 +31,13 @@ const activaId = etapasRender[0]?.id ?? '';
 
 <Base
   title="Tesis (reglamento anterior) — Titulación FADE-UPT"
-  description="Guía del proceso de titulación por tesis para egresados de la Facultad de Derecho y Ciencias Políticas de la UPT que iniciaron su trámite antes del 16 de marzo de 2026, regidos por la Resolución 221-2025-UPT-CU."
+  description="Guía del proceso de titulación por tesis para egresados de la Facultad de Derecho y Ciencias Políticas de la UPT que iniciaron su trámite antes del 16 de marzo de 2026, a quienes les rigen las tasas vigentes antes de esa fecha."
 >
   <main class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
     <EncabezadoProceso
       titulo="Tesis"
-      descripcion="Si iniciaste tu trámite de titulación antes del 16 de marzo de 2026, te rige la Resolución 221-2025-UPT-CU (reglamento anterior). Recorre aquí cada etapa de ese proceso, con los documentos que preparas, el pago cuando corresponde y el trámite único que envías por Mesa de Partes Virtual."
-      volverHref="/tesis-convencional"
+      descripcion="Si iniciaste tu trámite de titulación antes del 16 de marzo de 2026, te rigen las tasas vigentes antes de esa fecha. Recorre aquí cada etapa de ese proceso, con los documentos que preparas, el pago cuando corresponde y el trámite único que envías por Mesa de Partes Virtual."
+      volverHref="/"
     >
       <p slot="aviso">
         ¿Iniciaste tu trámite desde el <strong class="font-medium text-foreground">16 de marzo de 2026</strong>?{' '}
