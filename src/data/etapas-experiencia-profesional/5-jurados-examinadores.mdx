@@ -1,0 +1,76 @@
+---
+orden: 5
+titulo: "Jurados examinadores"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT para Jurados Examinadores", archivo: "https://drive.google.com/file/d/1i9ula57bLxDaz3ATbrPhyJ_6ipMMhu5x/view?usp=drive_link", formato: "PDF" }
+---
+import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
+
+<p class="text-sm text-muted-foreground">Llegas con el <strong>certificado de similitud</strong> y el <strong>reporte Turnitin</strong>; ahora pides que designen a tus jurados y fijen tu sustentación.</p>
+
+Con la similitud aprobada, ahora corresponde pedir al Decanato que designe a los
+**jurados examinadores** y fije tu **sustentación**. Es el expediente más extenso del
+proceso —reúne todo lo actuado hasta aquí— y trae **dos tasas**: el diploma de título
+profesional y la designación del jurado de sustentación.
+
+### Prepara
+
+Reúne dos archivos. El **PDF N.° 1** junta la solicitud y todos sus respaldos: el
+**FUT para designación de jurados examinadores** —dirigido al Decanato, mira
+<EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—,
+el **informe de culminación del asesor**, el **certificado de similitud**, la
+**constancia de revisión y corrección de estilo, redacción y ortografía** emitida por el
+especialista correspondiente, la **constancia de no adeudo**, tu **grado de Bachiller
+(ambas caras)** y tu **certificado de prácticas pre profesionales**. Digitalízalos
+juntos en un único archivo, en ese orden
+(<EnlaceReferencia href="https://drive.google.com/file/d/1OAloU9CEuFEeLKErXcU35hJb0rfo29Au/view?usp=drive_link">así debe verse el PDF N.° 1</EnlaceReferencia>). El **PDF N.° 2** es tu **Informe Final de
+Experiencia Profesional** completo
+(<EnlaceReferencia href="https://drive.google.com/file/d/1tzXE9Lp_1z7MqRewPLrDX6mOfgE2ruLH/view?usp=drive_link">así debe verse el PDF N.° 2</EnlaceReferencia>).
+
+Una precisión sobre ese expediente: la **constancia de no adeudo** se solicita en
+**Caja** y **no** es lo mismo que el informe económico; son documentos distintos, no los
+confundas.
+
+### Paga
+
+Con el expediente listo, paga en la Pasarela de Pagos de la UPT las **dos tasas** de este
+paso para tener ambas **boletas electrónicas** a la mano. Guarda la serie y el número de
+cada comprobante.
+
+<PagoEtapa pagos={[
+  { monto: "S/ 1,200.00", codigo: "15941", concepto: "Diploma de título profesional (pregrado)" },
+  { monto: "S/ 350.00", codigo: "15938", concepto: "Designación de jurado de sustentación" }
+]} />
+
+### Envía
+
+Con el expediente, el informe y las dos boletas listos, registra **una única solicitud**
+por <EnlaceReferencia href="https://net.upt.edu.pe/tdv/weblogin/login.php">Mesa de Partes Virtual</EnlaceReferencia>
+y adjunta en el mismo envío el **PDF N.° 1**, el **PDF N.° 2** y las **dos boletas
+electrónicas** (serie y número de cada comprobante). Es un solo trámite con todo adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Otros varios"
+  asunto="JURADOS EXAMINADORES EXP PROF" />
+
+Antes de enviarlo, revisa <GuiaEnlace titulo="Cómo debería quedar el trámite antes de enviarlo" imagen="/guias/experiencia/5-jurados-examinadores/tramite.png">cómo debe quedar el trámite</GuiaEnlace>.
+
+### Y ahora, ¿qué sigue?
+
+La **Unidad de Investigación** verifica que tu expediente esté completo y, si está
+conforme, lo pasa al **Decanato de la Facultad**. En algún momento de este tramo el
+Decanato te **llamará por teléfono** para que **acudas con tres (03) ejemplares impresos**
+de tu informe: cada uno **anillado**, dentro de un **sobre manila** y con tu **nombre por
+fuera** (<GuiaEnlace titulo="Así deben verse los tres ejemplares" imagen="/guias/experiencia/5-jurados-examinadores/ejemplares.png">así deben verse los tres ejemplares</GuiaEnlace>). Se usan para el **sorteo** del jurado.
+
+Luego, el Decanato expide la **resolución** con la **fecha, hora y lugar** de tu
+sustentación —un **acto público**— y con tu **jurado de sustentación**: **Presidente,
+Secretario y Vocal**. Ten presente que tu **asesor no puede ser jurado**. El día de la
+sustentación tu **exposición es de 30 minutos** y luego respondes las preguntas del
+jurado por **hasta 60 minutos**. Una vez que sustentes, quedas listo para el paso final:
+la publicación en el **repositorio**.

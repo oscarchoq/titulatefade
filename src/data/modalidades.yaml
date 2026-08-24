@@ -22,7 +22,7 @@
   articulo: "Art. 35-a"
   titulo: "Informe de Experiencia Profesional"
   descripcion: "Para bachilleres con mínimo 3 años (36 meses) de experiencia laboral acreditada."
-  href: "#"
+  href: "/experiencia-profesional"
 
 - id: informe-casos
   orden: 4
