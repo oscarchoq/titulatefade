@@ -1,0 +1,70 @@
+---
+// Página del proceso de Informe de Estudio de Casos (TSP Art. 35-b).
+// SOLO compone: obtiene las etapas de la collection `etapasEstudioCasos`,
+// las ordena, renderiza su cuerpo MDX, y arma el shell reutilizable (Encabezado +
+// Riel + artículos de etapa). Todo el copy/datos viven en los .mdx, no aquí.
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import EncabezadoProceso from '../components/proceso/EncabezadoProceso.astro';
+import RielProceso from '../components/proceso/RielProceso.astro';
+import EtapaArticulo from '../components/proceso/EtapaArticulo.astro';
+
+// getCollection NO garantiza orden → ordenar por `orden` (igual que modalidades).
+const etapas = (await getCollection('etapasEstudioCasos')).sort(
+  (a, b) => a.data.orden - b.data.orden,
+);
+
+// Renderizar el cuerpo MDX de cada etapa para poder envolverlo en EtapaArticulo.
+const etapasRender = await Promise.all(
+  etapas.map(async (etapa) => ({
+    id: etapa.id,
+    data: etapa.data,
+    Content: (await render(etapa)).Content,
+  })),
+);
+
+// Datos que el riel necesita (nombre real por etapa) + etapa activa inicial.
+const rielEtapas = etapasRender.map((e) => ({ id: e.id, titulo: e.data.titulo }));
+const activaId = etapasRender[0]?.id ?? '';
+---
+
+<Base
+  title="Informe de Estudio de Casos — Titulación FADE-UPT"
+  description="Guía del proceso de titulación por Informe de Estudio de Casos (TSP Art. 35-b) en la Facultad de Derecho y Ciencias Políticas de la UPT. Es la modalidad de menor recurrencia y aún no contamos con material propio: lo mostrado se basa en el reglamento, así que es referencial y puede variar. Confirma cada paso en Secretaría Académica Administrativa."
+>
+  <main class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <EncabezadoProceso titulo="Informe de Estudio de Casos" descripcion="" volverHref="/">
+      <p slot="aviso">
+        Es la modalidad de titulación menos transitada, y aún no contamos con material propio (afiches, ejemplos) para ella. Lo que sigue se basa en el Reglamento de Grados y Títulos de la FADE, así que tómalo como una guía <strong class="font-medium text-foreground">referencial que puede variar</strong>: <strong class="font-medium text-foreground">confirma cada paso en Secretaría Académica Administrativa</strong> antes de iniciar tu trámite.
+      </p>
+    </EncabezadoProceso>
+
+    <div class="flex flex-col gap-10 md:flex-row md:gap-8">
+      <div class="hidden md:block md:w-56 md:flex-shrink-0">
+        <RielProceso etapas={rielEtapas} activaId={activaId} />
+      </div>
+
+      <div class="flex-grow md:max-w-3xl">
+        {
+          etapasRender.map((etapa, i) => (
+            <EtapaArticulo
+              id={etapa.id}
+              titulo={etapa.data.titulo}
+              estado={etapa.data.estado}
+              plantillas={etapa.data.plantillas}
+              esPrimera={i === 0}
+              esUltima={i === etapasRender.length - 1}
+              activa={etapa.id === activaId}
+            >
+              <etapa.Content />
+            </EtapaArticulo>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+
+  <script>
+    import '../scripts/proceso-swap.ts';
+  </script>
+</Base>

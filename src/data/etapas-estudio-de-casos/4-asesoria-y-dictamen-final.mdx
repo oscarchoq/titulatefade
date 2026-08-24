@@ -1,0 +1,54 @@
+---
+orden: 4
+titulo: "Asesoría y dictamen final"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT (Formato Único de Trámite)", archivo: "https://drive.google.com/file/d/1djtPu6VK8N2bUvBDYpD6kv38TetSyC5C/view?usp=drive_link", formato: "PDF" }
+---
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
+
+<p class="text-sm text-muted-foreground">Con tu <strong>informe preliminar aprobado</strong>, ahora desarrollas el informe final con un asesor y lo sometes al dictamen.</p>
+
+Con el preliminar aprobado, la **Secretaría Académica Administrativa** te designa un
+**docente asesor** para que elabores el **informe final**: un trabajo descriptivo,
+analítico y crítico sobre tus dos expedientes, con sustento doctrinal y jurisprudencial.
+Cuando lo culmines, lo sometes a dictamen para que la Facultad lo revise antes de pasar a
+la sustentación.
+
+### Prepara
+
+Ten listo tu **informe final** —descriptivo, analítico y crítico— y solicita el
+**índice de similitud** —lo emite la **Unidad de Investigación**, previo pago, y se pide
+con un FUT dirigido al Decanato—. Recuerda que la similitud aceptada es de **hasta 20 %**,
+según el <EnlaceReferencia href="https://www.upt.edu.pe/upt/sgc/assets/ckeditor/kcfinder/upload/files/R.442-2023-UPT-CU_REGLAMENTO_DE_ORIGINALIDAD_DE_LA_PRODUCCION_INTELECTUAL_UPT.pdf">Reglamento de Originalidad de la Producción Intelectual (Res. 442-2023-UPT-CU)</EnlaceReferencia>.
+Prepara también el **FUT** solicitando el dictamen del informe final —mira
+<EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—.
+
+### Paga
+
+Antes de enviar nada, paga la tasa del índice de similitud en la Pasarela de Pagos de la
+UPT para tener la **boleta electrónica** a la mano. Guarda la serie y el número del
+comprobante.
+
+<PagoEtapa pagos={[{ monto: "S/ 15.00", codigo: "15551", concepto: "CERTIFICADO DE SIMILITUD" }]} />
+
+### Envía
+
+Con el informe final, el índice de similitud y la boleta listos, registra **una única
+solicitud** por <EnlaceReferencia href="https://net.upt.edu.pe/tdv/weblogin/login.php">Mesa de Partes Virtual</EnlaceReferencia> y adjunta en el mismo envío el FUT, el informe
+final y el índice de similitud (con la serie y el número de comprobante). Es un solo
+trámite con todo adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Otros varios"
+  asunto="Dictamen de informe final de estudio de casos" />
+
+### Y ahora, ¿qué sigue?
+
+El **Decanato** designa un docente para que emita el **dictamen del informe final**, y lo
+hace dentro de **15 días calendario**. Si tu informe recibe observaciones, tienes otros
+**15 días calendario** para levantarlas. Con el **dictamen favorable** en mano, quedas
+listo para solicitar tus jurados examinadores y fijar la sustentación.

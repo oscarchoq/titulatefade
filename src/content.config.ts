@@ -70,4 +70,24 @@ const etapasExperienciaProfesional = defineCollection({
   }),
 });
 
-export const collections = { modalidades, etapasTesis, etapasTesisOld, etapasExperienciaProfesional };
+// Informe de Estudio de Casos (TSP Art. 35-b): colección hermana con el mismo
+// schema que las demás, para que editar una no afecte a la otra.
+const etapasEstudioCasos = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: 'src/data/etapas-estudio-de-casos' }),
+  schema: z.object({
+    orden: z.number(),
+    titulo: z.string(),
+    estado: z.enum(['completo', 'pendiente']).default('completo'),
+    plantillas: z
+      .array(
+        z.object({
+          nombre: z.string(),
+          archivo: z.string(),
+          formato: z.string().optional(),
+        }),
+      )
+      .default([]),
+  }),
+});
+
+export const collections = { modalidades, etapasTesis, etapasTesisOld, etapasExperienciaProfesional, etapasEstudioCasos };

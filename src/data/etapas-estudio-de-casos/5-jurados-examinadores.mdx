@@ -1,0 +1,60 @@
+---
+orden: 5
+titulo: "Jurados examinadores"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT (Formato Único de Trámite)", archivo: "https://drive.google.com/file/d/1djtPu6VK8N2bUvBDYpD6kv38TetSyC5C/view?usp=drive_link", formato: "PDF" }
+---
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
+
+<p class="text-sm text-muted-foreground">Con el <strong>dictamen favorable</strong> de tu informe final, ahora pides que designen a tus jurados y fijen tu sustentación.</p>
+
+Con el dictamen favorable de tu informe final, corresponde pedir al Decanato que designe
+a los **jurados examinadores** y fije tu **sustentación**. Es el paso más cargado del
+proceso —reúne varios requisitos— y trae **dos tasas**: el diploma de título profesional
+y la designación del jurado de sustentación.
+
+### Prepara
+
+Reúne los requisitos que la Facultad exige para habilitar la sustentación: el **dictamen
+favorable del asesor**, la **constancia de similitud** —se solicita con un FUT dirigido al
+Decanato y la emite la **Unidad de Investigación**— y la **constancia de revisión y
+corrección de estilo, redacción y ortografía**. Para la sustentación en sí, prepara además
+el trabajo en **soporte digital (Word y PDF)** y **tres (03) ejemplares en físico de cada
+expediente judicial**.
+
+Ten a la mano también el **FUT** dirigido al Decanato pidiendo la fecha y hora de tu
+sustentación —mira <EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—.
+
+### Paga
+
+Con el expediente listo, paga en la Pasarela de Pagos de la UPT las **dos tasas** de este
+paso para tener ambas **boletas electrónicas** a la mano. Guarda la serie y el número de
+cada comprobante.
+
+<PagoEtapa pagos={[
+  { monto: "S/ 1,200.00", codigo: "15941", concepto: "Diploma de título profesional (pregrado)" },
+  { monto: "S/ 350.00", codigo: "15938", concepto: "Designación de jurado de sustentación" }
+]} />
+
+### Envía
+
+Cuentas con **60 días calendario** para presentar esta solicitud. Registra **una única
+solicitud** por <EnlaceReferencia href="https://net.upt.edu.pe/tdv/weblogin/login.php">Mesa de Partes Virtual</EnlaceReferencia> y adjunta en el mismo envío el FUT, los
+requisitos, el trabajo en digital y las **dos boletas electrónicas** (serie y número de
+cada comprobante). Es un solo trámite con todo adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Otros varios"
+  asunto="JURADOS EXAMINADORES" />
+
+### Y ahora, ¿qué sigue?
+
+El **Decanato** emite la **resolución** con la **fecha y hora** de tu sustentación y
+designa tu **jurado de tres docentes**: **Presidente, Secretario y Vocal**. El día de la
+sustentación tu **exposición es de 30 minutos** y luego respondes las preguntas del jurado
+por **hasta 60 minutos**; al terminar, el jurado te califica. Aprobada la sustentación,
+quedas listo para el paso final: la publicación en el **repositorio**.
