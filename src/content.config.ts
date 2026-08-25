@@ -90,4 +90,24 @@ const etapasEstudioCasos = defineCollection({
   }),
 });
 
-export const collections = { modalidades, etapasTesis, etapasTesisOld, etapasExperienciaProfesional, etapasEstudioCasos };
+// Tesis en Formato de Artículo (Art. 32): colección hermana con el mismo schema
+// que las demás, para que editar una no afecte a la otra.
+const etapasTesisArticulo = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: 'src/data/etapas-tesis-articulo' }),
+  schema: z.object({
+    orden: z.number(),
+    titulo: z.string(),
+    estado: z.enum(['completo', 'pendiente']).default('completo'),
+    plantillas: z
+      .array(
+        z.object({
+          nombre: z.string(),
+          archivo: z.string(),
+          formato: z.string().optional(),
+        }),
+      )
+      .default([]),
+  }),
+});
+
+export const collections = { modalidades, etapasTesis, etapasTesisOld, etapasExperienciaProfesional, etapasEstudioCasos, etapasTesisArticulo };

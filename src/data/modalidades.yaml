@@ -15,7 +15,7 @@
   articulo: "Art. 32"
   titulo: "Tesis en Formato de Artículo"
   descripcion: "Investigación con estructura de artículo científico, lista para publicar en revista indexada."
-  href: "#"
+  href: "/tesis-articulo"
 
 - id: informe-experiencia
   orden: 3

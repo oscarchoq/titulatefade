@@ -1,0 +1,61 @@
+---
+orden: 1
+titulo: "Inscripción del tema"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT (Formato Único de Trámite)", archivo: "https://drive.google.com/file/d/1djtPu6VK8N2bUvBDYpD6kv38TetSyC5C/view?usp=drive_link", formato: "PDF" }
+  - { nombre: "Formato de Ficha de Tema (Anexo 2)", archivo: "https://docs.google.com/document/d/1L-Jby_vOZxfWPM8SwAVlCHrg-T1aTK80", formato: "DOCX" }
+  - { nombre: "Líneas de Investigación", archivo: "https://drive.google.com/file/d/1kl5jwHrT-XyJ4kTfd-yaubj03WuHMoli/view?usp=drive_link", formato: "PDF" }
+  - { nombre: "Modelo de Plan de Tesis", archivo: "https://docs.google.com/document/d/1Xxxw6tQUtXCTmV7A8AhJxaAubEhvsxNj", formato: "DOCX" }
+  - { nombre: "Normas de Estilo", archivo: "https://docs.google.com/document/d/1n9XYD1FhvauyRL2oyGA6VEL01Tn28pK_", formato: "DOCX" }
+---
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
+
+<p class="text-sm text-muted-foreground">Llegas a este paso con la <strong>totalidad de asignaturas del I al X ciclo aprobadas</strong>; ese es el requisito para inscribir tu tema.</p>
+
+El primer paso es inscribir oficialmente tu tema de investigación ante el Decanato de la
+Facultad. Aquí no presentas todavía la tesis desarrollada, sino la propuesta del tema, para
+que la Universidad te asigne una **línea de investigación** vinculada al Derecho y un
+**asesor de plan** que te acompañe a armar la propuesta. Antes de definir el tema, revisa
+las **Líneas de Investigación** de la Facultad para enmarcarlo correctamente.
+
+### Prepara
+
+Reúne tu expediente en un solo **PDF N.° 1**, que junta dos documentos: el **FUT** —la
+solicitud dirigida al Decanato, mira <EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>— y la
+**Ficha de Tema**, que corresponde al **Anexo 2** del Reglamento de Grados y Títulos.
+Completa ambos con cuidado y digitalízalos juntos en un único archivo, en ese orden.
+
+### Paga
+
+Antes de enviar nada, paga la tasa en la Pasarela de Pagos de la UPT para tener la **boleta
+electrónica** a la mano. Guarda la serie y el número del comprobante.
+
+<PagoEtapa pagos={[{ monto: "S/ 300.00", codigo: "15935", concepto: "1RA FASE: PROYECTO DE TESIS" }]} />
+
+### Envía
+
+Con el expediente y la boleta listos, registra **una única solicitud** por
+<EnlaceReferencia href="https://net.upt.edu.pe/tdv/weblogin/login.php">Mesa de Partes Virtual</EnlaceReferencia>. Adjunta en el mismo envío el **PDF N.° 1** y la
+**boleta electrónica** (serie y número de comprobante). Es un solo trámite con todo adjunto,
+no dos envíos separados.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="PRIMERA FASE (Título profesional)"
+  asunto="FICHA DE TEMA" />
+
+### Y ahora, ¿qué sigue?
+
+La **Unidad de Investigación** evalúa tu solicitud y emite un informe que pasa al
+**Decanato de la Facultad**, el cual expide una **Resolución de Decanato**. Cuando te
+notifiquen, la resolución te confirmará tres cosas: la **línea de investigación** asignada,
+tu **asesor de plan** designado y la **inscripción oficial** de tu tema.
+
+A partir de esa notificación tienes **3 meses**, ampliables de forma **automática por 1
+mes**, para elaborar tu plan de tesis junto a tu asesor de plan (según el **Modelo de Plan
+de Tesis** y las **Normas de Estilo**). Al cerrar —y dentro del plazo—, tu asesor emite el
+**informe de culminación de asesoría de plan**. Con eso quedas listo para inscribir el plan
+y que lo revise el jurado evaluador.

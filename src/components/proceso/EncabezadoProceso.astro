@@ -3,15 +3,20 @@
 // hardcodeado: enlace "Regresar" + título + descripción llegan por props.
 interface Props {
   titulo: string;
-  descripcion: string;
+  descripcion?: string; // opcional: puede llegar por el slot `descripcion` con formato
   volverHref?: string;
 }
 
-const { titulo, descripcion, volverHref = '/' } = Astro.props;
+const { titulo, descripcion = '', volverHref = '/' } = Astro.props;
 
 // Slot opcional para un aviso (p. ej. enlace de derivación a otro proceso).
 // Si no se provee contenido, el encabezado se ve idéntico a antes.
 const tieneAviso = Astro.slots.has('aviso');
+
+// Slot opcional para la descripción con formato (negritas, enlaces). Si se
+// provee, reemplaza al prop `descripcion`; si no, se usa el string plano. Así
+// las páginas existentes siguen funcionando sin cambios.
+const tieneDescripcion = Astro.slots.has('descripcion');
 ---
 
 <header class="mb-10">
@@ -37,7 +42,7 @@ const tieneAviso = Astro.slots.has('aviso');
     {titulo}
   </h1>
   <p class="mt-4 text-base text-muted-foreground">
-    {descripcion}
+    {tieneDescripcion ? <slot name="descripcion" /> : descripcion}
   </p>
 
   {

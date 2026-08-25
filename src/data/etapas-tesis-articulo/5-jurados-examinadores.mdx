@@ -1,0 +1,71 @@
+---
+orden: 5
+titulo: "Jurados examinadores"
+estado: "completo"
+plantillas:
+  - { nombre: "FUT (Formato Único de Trámite)", archivo: "https://drive.google.com/file/d/1djtPu6VK8N2bUvBDYpD6kv38TetSyC5C/view?usp=drive_link", formato: "PDF" }
+---
+import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
+import FichaTramite from '../../components/proceso/FichaTramite.astro';
+import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
+
+<p class="text-sm text-muted-foreground">Llegas a este paso con la <strong>carta de aceptación de la revista</strong>, que da por cerrado tu asesoramiento.</p>
+
+Con la carta de aceptación en mano, ahora corresponde pedir al Decanato que designe a los
+**jurados examinadores** y fije tu **sustentación**. Es el expediente más extenso del
+proceso —reúne todo lo actuado hasta aquí— y trae **dos tasas**: el diploma de título
+profesional y la designación del jurado de sustentación. Una vez que reúnes **todos los
+requisitos** de este paso, corre un plazo de **6 meses** para enviar el FUT; si lo dejas
+vencer, el trámite se reinicia.
+
+### Prepara
+
+Reúne dos archivos. El **PDF N.° 1** junta la solicitud y todos sus respaldos: el **FUT**
+para la designación de jurados examinadores y fecha de sustentación —dirigido al Decanato,
+mira <EnlaceReferencia href="https://drive.google.com/file/d/1SZmTub3mNlJ4jlZwf5vN_66l6m4qybNk/view?usp=drive_link">cómo editar tu FUT</EnlaceReferencia>—, la **carta de aceptación de la
+revista**, tu **grado de Bachiller (ambas caras)**, tu **Certificado de prácticas pre
+profesionales**, la **constancia de revisión y corrección de estilo, redacción y
+ortografía** y la **Constancia de no adeudo**. Digitalízalos juntos en un único archivo, en
+ese orden. El **PDF N.° 2** es tu **tesis en formato de artículo completa**.
+
+En el FUT debes **indicar el nombre del artículo, el nombre de la revista, su indexación y
+el URL** de la publicación. Una precisión: la **Constancia de no adeudo** se solicita en
+**Caja** y **no** es lo mismo que el informe económico; son documentos distintos, no los
+confundas.
+
+### Paga
+
+Con el expediente listo, paga en la Pasarela de Pagos de la UPT las **dos tasas** de este
+paso para tener ambas **boletas electrónicas** a la mano. Guarda la serie y el número de
+cada comprobante.
+
+<PagoEtapa pagos={[
+  { monto: "S/ 1,200.00", codigo: "15941", concepto: "Diploma de título profesional (pregrado)" },
+  { monto: "S/ 350.00", codigo: "15938", concepto: "Designación de jurado de sustentación" }
+]} />
+
+### Envía
+
+Con el expediente, la tesis y las dos boletas listos, registra **una única solicitud** por
+<EnlaceReferencia href="https://net.upt.edu.pe/tdv/weblogin/login.php">Mesa de Partes Virtual</EnlaceReferencia> y adjunta en el mismo envío el **PDF N.° 1**, el
+**PDF N.° 2** y las **dos boletas electrónicas** (serie y número de cada comprobante). Es un
+solo trámite con todo adjunto.
+
+<FichaTramite
+  destinatario="FADE – Decanato de la Facultad de Derecho y Cs. Políticas"
+  tipo="Otros varios"
+  asunto="JURADOS EXAMINADORES" />
+
+### Y ahora, ¿qué sigue?
+
+La **Unidad de Investigación** verifica que tu expediente esté completo y, si está conforme,
+informa y **propone a los tres jurados examinadores**. Con ese informe, el **Decanato**
+expide la **resolución** que te declara **apto** y designa tu jurado —**Presidente, Vocal y
+Secretario**— con la **fecha, hora y lugar** de tu sustentación, que es un **acto público**.
+
+La sustentación es **solo oral**: expones durante **30 minutos** y luego respondes las
+preguntas del jurado por **hasta 60 minutos**. A diferencia de la tesis convencional, aquí
+el jurado **no puede formular observaciones ni exigir recomendaciones** —tu trabajo ya fue
+validado por la revista—. Si desapruebas, tienes una **segunda y única oportunidad** de
+sustentar. Aprobada la sustentación, quedas listo para el paso final: la publicación en el
+**repositorio**.

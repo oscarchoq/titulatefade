@@ -1,0 +1,70 @@
+---
+// Página del proceso de Tesis en Formato de Artículo (Art. 32).
+// SOLO compone: obtiene las etapas de la collection `etapasTesisArticulo`,
+// las ordena, renderiza su cuerpo MDX, y arma el shell reutilizable (Encabezado +
+// Riel + artículos de etapa). Todo el copy/datos viven en los .mdx, no aquí.
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import EncabezadoProceso from '../components/proceso/EncabezadoProceso.astro';
+import RielProceso from '../components/proceso/RielProceso.astro';
+import EtapaArticulo from '../components/proceso/EtapaArticulo.astro';
+
+// getCollection NO garantiza orden → ordenar por `orden` (igual que modalidades).
+const etapas = (await getCollection('etapasTesisArticulo')).sort(
+  (a, b) => a.data.orden - b.data.orden,
+);
+
+// Renderizar el cuerpo MDX de cada etapa para poder envolverlo en EtapaArticulo.
+const etapasRender = await Promise.all(
+  etapas.map(async (etapa) => ({
+    id: etapa.id,
+    data: etapa.data,
+    Content: (await render(etapa)).Content,
+  })),
+);
+
+// Datos que el riel necesita (nombre real por etapa) + etapa activa inicial.
+const rielEtapas = etapasRender.map((e) => ({ id: e.id, titulo: e.data.titulo }));
+const activaId = etapasRender[0]?.id ?? '';
+---
+
+<Base
+  title="Tesis en Formato de Artículo — Titulación FADE-UPT"
+  description="Guía del proceso de titulación por Tesis en Formato de Artículo (Art. 32) en la Facultad de Derecho y Ciencias Políticas de la UPT. Aún nadie se ha titulado por esta vía y no contamos con material propio: lo mostrado se basa solo en el reglamento, así que es referencial y puede variar. Confirma cada paso con la Unidad de Investigación."
+>
+  <main class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <EncabezadoProceso titulo="Tesis en Formato de Artículo" volverHref="/">
+      <Fragment slot="descripcion">
+        Es una vía contemplada en el reglamento pero <strong class="font-medium text-foreground">muy poco transitada</strong>, así que aún no contamos con material propio (afiches, ejemplos) para ella. Lo que sigue se basa <strong class="font-medium text-foreground">solo en el Reglamento de Grados y Títulos de la FADE</strong>, por lo que conviene tomarlo como una guía <strong class="font-medium text-foreground">referencial que puede variar</strong>: confirma cada paso con la <strong class="font-medium text-foreground">Unidad de Investigación</strong> antes de iniciar tu trámite.
+      </Fragment>
+    </EncabezadoProceso>
+
+    <div class="flex flex-col gap-10 md:flex-row md:gap-8">
+      <div class="hidden md:block md:w-56 md:flex-shrink-0">
+        <RielProceso etapas={rielEtapas} activaId={activaId} />
+      </div>
+
+      <div class="flex-grow md:max-w-3xl">
+        {
+          etapasRender.map((etapa, i) => (
+            <EtapaArticulo
+              id={etapa.id}
+              titulo={etapa.data.titulo}
+              estado={etapa.data.estado}
+              plantillas={etapa.data.plantillas}
+              esPrimera={i === 0}
+              esUltima={i === etapasRender.length - 1}
+              activa={etapa.id === activaId}
+            >
+              <etapa.Content />
+            </EtapaArticulo>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+
+  <script>
+    import '../scripts/proceso-swap.ts';
+  </script>
+</Base>
