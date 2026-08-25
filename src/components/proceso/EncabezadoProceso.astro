@@ -1,6 +1,12 @@
 ---
 // Encabezado de una página de proceso. Genérico y prop-driven, sin copy
 // hardcodeado: enlace "Regresar" + título + descripción llegan por props.
+//
+// La descripción admite dos formas (SPEC 13/14), retrocompatibles entre sí:
+//   1. prop `descripcion: string` — texto plano, sin formato.
+//   2. slot `descripcion` — para negritas/enlaces; se usa vía
+//      <Fragment slot="descripcion">…</Fragment> porque este componente ya
+//      envuelve el contenido en <p>. Si se provee el slot, reemplaza al prop.
 interface Props {
   titulo: string;
   descripcion?: string; // opcional: puede llegar por el slot `descripcion` con formato

@@ -1,7 +1,11 @@
 ---
-// Una fila de modalidad (SPEC 02 §Paso 4).
-// Hover (3 microinteracciones): el cuadro de artículo se rellena de dorado y
-// crece; toda la fila escala mínimamente; la flecha se desplaza. `group` en el
+// Una fila de modalidad (SPEC 02 §Paso 4; responsive SPEC 14).
+// En móvil (<sm) la card se apila: el artículo es un chip dorado de ancho
+// automático encima del título, con título/descripción a ancho completo y la
+// flecha a la derecha centrada. Desde `sm` se conserva la fila horizontal con
+// el cuadro `w-24` a la izquierda.
+// Hover (3 microinteracciones): el cuadro/chip de artículo se rellena de dorado
+// y crece; toda la fila escala mínimamente; la flecha se desplaza. `group` en el
 // <a> coordina los tres. Texto claro sobre dorado = `text-background` (papel).
 interface Props {
   articulo: string;
@@ -17,15 +21,17 @@ const { articulo, titulo, descripcion, href } = Astro.props;
   href={href}
   class="group flex items-center gap-4 border-b border-border px-4 py-5 transition-transform hover:scale-[1.01] hover:bg-accent"
 >
-  <span
-    class="inline-flex w-24 shrink-0 items-center justify-center whitespace-nowrap rounded-md border border-gold py-2 text-sm font-semibold text-gold transition-all group-hover:scale-105 group-hover:bg-gold group-hover:text-background"
-  >
-    {articulo}
-  </span>
+  <div class="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+    <span
+      class="inline-flex shrink-0 items-center justify-center self-start whitespace-nowrap rounded-md border border-gold px-2 py-0.5 text-xs font-semibold text-gold transition-all group-hover:scale-105 group-hover:bg-gold group-hover:text-background sm:w-24 sm:self-auto sm:px-0 sm:py-2 sm:text-sm"
+    >
+      {articulo}
+    </span>
 
-  <div class="flex-1">
-    <p class="text-lg font-semibold text-foreground">{titulo}</p>
-    <p class="mt-1 text-sm text-muted-foreground">{descripcion}</p>
+    <div class="flex-1">
+      <p class="text-lg font-semibold text-foreground">{titulo}</p>
+      <p class="mt-1 text-sm text-muted-foreground">{descripcion}</p>
+    </div>
   </div>
 
   <svg

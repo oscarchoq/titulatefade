@@ -9,9 +9,12 @@ import PieDePagina from '../components/PieDePagina.astro';
 interface Props {
   title: string;
   description?: string;
+  /** Muestra el pie de página global. Por defecto `true` (retrocompatible);
+      páginas como la 404 lo pasan en `false` para renderizar sin footer. */
+  pie?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, pie = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,13 +28,20 @@ const { title, description } = Astro.props;
     {description && <meta name="description" content={description} />}
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body>
-    <slot />
+  <body class="flex min-h-[100dvh] flex-col">
+    {/* Contenedor que crece (SPEC 14): empuja el pie al fondo del viewport en
+        páginas cortas sin usar position:fixed; con contenido largo el pie
+        sigue el flujo tras el contenido. Solo aporta altura, no restringe el
+        ancho: cada página conserva su propio <main class="mx-auto max-w-*">. */}
+    <div class="flex-1">
+      <slot />
+    </div>
 
     {/* Pie de página global (SPEC 09): montado una sola vez, tras <slot />,
-        aparece en todas las páginas que usan Base. Va en flujo normal, antes
-        del <dialog> overlay del visor de Guías (que no se ve afectado). */}
-    <PieDePagina />
+        aparece en todas las páginas que usan Base salvo cuando pie={false}
+        (SPEC 14). Va en flujo normal, antes del <dialog> overlay del visor de
+        Guías (que no se ve afectado). */}
+    {pie && <PieDePagina />}
 
     {/* Visor global de Guías Rápidas (SPEC 08): un único <dialog> por página,
         reutilizado por todos los GuiaEnlace. Solo imagen (sin texto de paso),
