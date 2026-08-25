@@ -1,0 +1,46 @@
+---
+// Página 404 propia (SPEC 14). On-brand pero sobria: fondo papel, sin hero ni
+// navy, contenido centrado vertical y horizontalmente. Usa Base con pie={false}
+// para renderizar sin footer; el contenedor flex-1 de Base permite que el main
+// ocupe todo el alto y centre el contenido.
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Página no encontrada — Titulación FADE-UPT"
+  description="La página que buscas no existe o cambió de dirección."
+  pie={false}
+>
+  <main class="flex min-h-[100dvh] flex-col items-center justify-center px-4 text-center">
+    <p
+      class="font-display font-bold tracking-tight text-foreground"
+      style="font-size: clamp(8rem, 34vw, 16rem); line-height: 0.8"
+    >
+      4<span class="text-gold">0</span>4
+    </p>
+
+    <span class="mt-6 block h-px w-12 bg-gold" aria-hidden="true"></span>
+
+    <p class="mt-6 max-w-md text-base text-muted-foreground">
+      La página que buscas no existe o cambió de dirección.
+    </p>
+
+    <a
+      href="/"
+      class="group mt-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-4 transition-transform group-hover:-translate-x-0.5"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+      Regresar al inicio
+    </a>
+  </main>
+</Base>
