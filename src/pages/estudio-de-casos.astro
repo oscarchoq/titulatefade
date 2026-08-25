@@ -33,10 +33,10 @@ const activaId = etapasRender[0]?.id ?? '';
   description="Guía del proceso de titulación por Informe de Estudio de Casos (TSP Art. 35-b) en la Facultad de Derecho y Ciencias Políticas de la UPT. Es la modalidad de menor recurrencia y aún no contamos con material propio: lo mostrado se basa en el reglamento, así que es referencial y puede variar. Confirma cada paso en Secretaría Académica Administrativa."
 >
   <main class="mx-auto max-w-4xl px-4 py-12 sm:py-16">
-    <EncabezadoProceso titulo="Informe de Estudio de Casos" descripcion="" volverHref="/">
-      <p slot="aviso">
-        Es la modalidad de titulación menos transitada, y aún no contamos con material propio (afiches, ejemplos) para ella. Lo que sigue se basa en el Reglamento de Grados y Títulos de la FADE, así que tómalo como una guía <strong class="font-medium text-foreground">referencial que puede variar</strong>: <strong class="font-medium text-foreground">confirma cada paso en Secretaría Académica Administrativa</strong> antes de iniciar tu trámite.
-      </p>
+    <EncabezadoProceso titulo="Informe de Estudio de Casos" volverHref="/">
+      <Fragment slot="descripcion">
+        Es la modalidad de titulación <strong class="font-medium text-foreground">menos transitada</strong>, así que aún no contamos con material propio (afiches, ejemplos) para ella. Lo que sigue se basa <strong class="font-medium text-foreground">solo en el Reglamento de Grados y Títulos de la FADE</strong>, por lo que conviene tomarlo como una guía <strong class="font-medium text-foreground">referencial que puede variar</strong>: confirma cada paso en <strong class="font-medium text-foreground">Secretaría Académica Administrativa</strong> antes de iniciar tu trámite.
+      </Fragment>
     </EncabezadoProceso>
 
     <div class="flex flex-col gap-10 md:flex-row md:gap-8">
