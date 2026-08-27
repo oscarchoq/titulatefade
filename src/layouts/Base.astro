@@ -12,9 +12,21 @@ interface Props {
   /** Muestra el pie de página global. Por defecto `true` (retrocompatible);
       páginas como la 404 lo pasan en `false` para renderizar sin footer. */
   pie?: boolean;
+  /** Color de la barra del navegador (SPEC 16). Por defecto papel `#F5F5F0`
+      (procesos, 404, …); la home lo pasa navy `#102A43` por abrir con el hero.
+      Hex literal, no `var()`: varios navegadores no resuelven custom
+      properties en `theme-color`. */
+  themeColor?: string;
 }
 
-const { title, description, pie = true } = Astro.props;
+const { title, description, pie = true, themeColor = '#F5F5F0' } = Astro.props;
+
+// SEO / Open Graph (SPEC 16): URLs absolutas derivadas de `site` (astro.config).
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.jpg', Astro.site);
+// Token de Google Search Console: se lee de la env var (corre en Node en el
+// build); solo se emite la meta si está definido. Fuera del repo.
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
 ---
 
 <!doctype html>
@@ -27,6 +39,22 @@ const { title, description, pie = true } = Astro.props;
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <meta name="generator" content={Astro.generator} />
+
+    {/* SEO / posicionamiento (SPEC 16): canonical + theme-color + Open Graph.
+        Sin etiquetas twitter:* (el público objetivo no usa X; WhatsApp,
+        Facebook, Telegram y LinkedIn leen og:*) ni JSON-LD. */}
+    <link rel="canonical" href={canonicalURL} />
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+    <meta name="theme-color" content={themeColor} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TituLateFADE" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_PE" />
   </head>
   <body class="flex min-h-[100dvh] flex-col">
     {/* Contenedor que crece (SPEC 14): empuja el pie al fondo del viewport en
