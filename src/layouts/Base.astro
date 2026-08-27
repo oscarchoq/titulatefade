@@ -118,6 +118,16 @@ const { title, description, pie = true } = Astro.props;
       .guia-modal__img[data-arrastrando='true'] {
         cursor: grabbing;
       }
+      /* SPEC 15: mientras la nueva imagen decodifica, la <img> queda oculta
+         (solo se ve el backdrop) para no pintar nunca el bitmap anterior. Se
+         revela quitando `data-guia-cargando` al terminar decode()/load. El
+         fade suave al revelar se desactiva bajo prefers-reduced-motion. */
+      .guia-modal__img {
+        transition: opacity 0.2s ease;
+      }
+      .guia-modal__img[data-guia-cargando] {
+        opacity: 0;
+      }
       .guia-modal__controles {
         position: fixed;
         bottom: 1.25rem;
@@ -155,6 +165,7 @@ const { title, description, pie = true } = Astro.props;
       @media (prefers-reduced-motion: reduce) {
         .guia-modal__img {
           will-change: auto;
+          transition: none;
         }
       }
     </style>
