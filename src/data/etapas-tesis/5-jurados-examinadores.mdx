@@ -6,6 +6,7 @@ plantillas:
   - { nombre: "FUT para Jurados Examinadores", archivo: "https://drive.google.com/file/d/1XLMFSPoTW1u63KlKKijv-enfzGZhuvMM/view?usp=share_link", formato: "PDF" }
 ---
 import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import RevisionTramite from '../../components/proceso/RevisionTramite.astro';
 import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
 import FichaTramite from '../../components/proceso/FichaTramite.astro';
 import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
@@ -50,7 +51,7 @@ trámite con todo adjunto.
   tipo="Otros varios"
   asunto="JURADOS EXAMINADORES" />
 
-Antes de enviarlo, revisa <GuiaEnlace titulo="Cómo debería quedar el trámite antes de enviarlo" imagen="/guias/tesis/5-jurados-examinadores/tramite.webp">cómo debe quedar el trámite</GuiaEnlace>.
+<RevisionTramite imagen="/guias/tesis/5-jurados-examinadores/tramite.webp" />
 
 ### Y ahora, ¿qué sigue?
 

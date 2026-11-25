@@ -9,7 +9,7 @@ plantillas:
   - { nombre: "Modelo de Plan de Tesis", archivo: "https://docs.google.com/document/d/1Xxxw6tQUtXCTmV7A8AhJxaAubEhvsxNj", formato: "DOCX" }
   - { nombre: "Normas de Estilo", archivo: "https://docs.google.com/document/d/1n9XYD1FhvauyRL2oyGA6VEL01Tn28pK_", formato: "DOCX" }
 ---
-import GuiaEnlace from '../../components/proceso/GuiaEnlace.astro';
+import RevisionTramite from '../../components/proceso/RevisionTramite.astro';
 import PagoEtapa from '../../components/proceso/PagoEtapa.astro';
 import FichaTramite from '../../components/proceso/FichaTramite.astro';
 import EnlaceReferencia from '../../components/proceso/EnlaceReferencia.astro';
@@ -50,7 +50,7 @@ trámite con todo adjunto, no dos envíos separados.
   tipo="PRIMERA FASE (Título profesional)"
   asunto="FICHA DE TEMA" />
 
-Antes de enviarlo, revisa <GuiaEnlace titulo="Cómo debería quedar el trámite antes de enviarlo" imagen="/guias/tesis/1-inscripcion-de-tema/tramite.webp">cómo debe quedar el trámite</GuiaEnlace>.
+<RevisionTramite imagen="/guias/tesis/1-inscripcion-de-tema/tramite.webp" />
 
 ### Y ahora, ¿qué sigue?
 
